@@ -1,0 +1,25 @@
+Error[1205] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 29 : unknown member 'ADCS' in '__tag_1038'
+Error[1131] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 29 : type mismatch in assignment
+Error[1205] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 30 : unknown member 'ADCS2' in '__tag_1033'
+Error[1131] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 30 : type mismatch in assignment
+Error[1205] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 32 : unknown member 'ADCS' in '__tag_1038'
+Error[1131] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 32 : type mismatch in assignment
+Error[1205] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 33 : unknown member 'ADCS2' in '__tag_1033'
+Error[1131] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 33 : type mismatch in assignment
+Error[1205] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 35 : unknown member 'ADCS' in '__tag_1038'
+Error[1131] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 35 : type mismatch in assignment
+Error[1205] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 36 : unknown member 'ADCS2' in '__tag_1033'
+Error[1131] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 36 : type mismatch in assignment
+Error[1205] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 38 : unknown member 'ADCS' in '__tag_1038'
+Error[1131] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 38 : type mismatch in assignment
+Error[1205] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 39 : unknown member 'ADCS2' in '__tag_1033'
+Error[1131] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 39 : type mismatch in assignment
+Error[1205] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 41 : unknown member 'ADCS' in '__tag_1038'
+Error[1131] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 41 : type mismatch in assignment
+Error[1205] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 42 : unknown member 'ADCS2' in '__tag_1033'
+Error[1131] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 42 : type mismatch in assignment
+Error[1205] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 44 : unknown member 'ADCS' in '__tag_1038'
+Error[1131] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 44 : type mismatch in assignment
+Error[1205] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 45 : unknown member 'ADCS2' in '__tag_1033'
+Error[1131] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 45 : type mismatch in assignment
+Error[1205] D:\UCZELNIA\STUDENT_NOWY-04-16\LED LINE\adc.c 47 : unknown member 'ADCS' in '__tag_1038'

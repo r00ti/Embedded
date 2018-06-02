@@ -1,0 +1,24 @@
+﻿Build started 2018-06-02 20:56:25.
+     1>Project "D:\Projekty\SterownikSP-01\SterownikSP-01\SterownikSP-01.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /Zi /clr /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _USING_V110_SDK71_ /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib MyForm.cpp MyForm1.cpp MyForm3.cpp
+         MyForm.cpp
+     1>MyForm.cpp(14): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
+         MyForm1.cpp
+         MyForm3.cpp
+         Generating Code...
+       Link:
+         D:\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Projekty\SterownikSP-01\Release\SterownikSP-01.exe" /INCREMENTAL:NO /NOLOGO /ASSEMBLYRESOURCE:Release\SterownikSP01.MyForm.resources /ASSEMBLYRESOURCE:Release\SterownikSP01.MyForm1.resources /ASSEMBLYRESOURCE:Release\SterownikSP01.MyForm2.resources /ASSEMBLYRESOURCE:Release\SterownikSP01.MyForm3.resources /ASSEMBLYRESOURCE:Release\SterownikSP01.MyForm4.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Projekty\SterownikSP-01\Release\SterownikSP-01.pdb" /SUBSYSTEM:WINDOWS,"5.01" /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 /SAFESEH "Release\SterownikSP-01.res"
+         Release\common.obj
+         Release\MyForm.obj
+         Release\MyForm1.obj
+         Release\MyForm2.obj
+         Release\MyForm3.obj
+         Release\MyForm4.obj
+         "Release\.NETFramework,Version=v4.0.AssemblyAttributes.obj"
+         SterownikSP-01.vcxproj -> D:\Projekty\SterownikSP-01\Release\SterownikSP-01.exe
+     1>Done Building Project "D:\Projekty\SterownikSP-01\SterownikSP-01\SterownikSP-01.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:08.61

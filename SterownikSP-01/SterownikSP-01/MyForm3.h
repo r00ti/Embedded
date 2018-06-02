@@ -2,7 +2,7 @@
 #include <iostream>
 #include "common.h"
 #include "MyForm1.h"
-	using namespace System::IO::Ports;
+using namespace System::IO::Ports;
 #include <windows.h>
 
 namespace SterownikSP01 {
@@ -27,9 +27,11 @@ namespace SterownikSP01 {
 		array<Object^>^ portname;
 		int numbytes;
 		int ck;
+		int flaga;
 		bool ready_to_read = true;
 		array<Byte>^ encodedBytes;
 		byte hams;
+		String^ marian;
 		//bool polaczony;
 		String ^portnames2;
 	private: System::Windows::Forms::TabControl^  as;
@@ -65,42 +67,16 @@ namespace SterownikSP01 {
 	private: System::Windows::Forms::Label^  label10;
 	private: System::Windows::Forms::ComboBox^  comboBox1;
 	private: System::Windows::Forms::Button^  button4;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
-
-
-
-
-
 	public:
 		String ^bouds2;
 		String^ data1;
 	private: System::Windows::Forms::TabPage^  tabPage2;
 	public:
 	private: System::Windows::Forms::Panel^  panel4;
-
-
 	private: System::Windows::Forms::PictureBox^  pictureBox2;
-
-
-
-
-
 	private: System::Windows::Forms::TextBox^  textBox8;
 	private: System::Windows::Forms::TextBox^  textBox7;
 	private: System::Windows::Forms::Label^  label15;
@@ -113,41 +89,38 @@ namespace SterownikSP01 {
 	private: System::Windows::Forms::TextBox^  textBox4;
 	private: System::Windows::Forms::TextBox^  textBox9;
 	private: System::Windows::Forms::Button^  button6;
-
-
-
-
-
-
-
-
-
-
-
+	private: System::Windows::Forms::Timer^  timer1;
+	private: System::Windows::Forms::Label^  label22;
+	private: System::Windows::Forms::Label^  label23;
+	private: System::Windows::Forms::Label^  label24;
+	private: System::Windows::Forms::Label^  label25;
+	private: System::Windows::Forms::Label^  label26;
+	private: System::Windows::Forms::Label^  label20;
+	private: System::Windows::Forms::Label^  label21;
+	private: System::Windows::Forms::Label^  label18;
+	private: System::Windows::Forms::Label^  label19;
+	private: System::Windows::Forms::Label^  label17;
+	private: System::Windows::Forms::Label^  label16;
+	private: System::Windows::Forms::Panel^  panel15;
+	private: System::Windows::Forms::Panel^  panel14;
+	private: System::Windows::Forms::Panel^  panel13;
+	private: System::Windows::Forms::Panel^  panel12;
+	private: System::Windows::Forms::Panel^  panel11;
+	private: System::Windows::Forms::Panel^  panel10;
+	private: System::Windows::Forms::Panel^  panel9;
+	private: System::Windows::Forms::Panel^  panel8;
+	private: System::Windows::Forms::Panel^  panel7;
+	private: System::Windows::Forms::Panel^  panel6;
+	private: System::Windows::Forms::Panel^  panel5;
+	private: System::ComponentModel::BackgroundWorker^  backgroundWorker1;
 
 	public:
-
-
-
-
-
-
-
-
-
-
-
-			 Byte receivs;
+		Byte receivs;
 
 		MyForm3(void)
 		{
 			InitializeComponent();
-
 			findPorts();
-
-			//
-			//TODO: Add the constructor code here
-			//
 		}
 
 	protected:
@@ -172,56 +145,11 @@ namespace SterownikSP01 {
 		}
 
 	protected:
-
-
-
-
-
 	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
-public: System::IO::Ports::SerialPort^  serialPort1;
-private:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	private: System::ComponentModel::IContainer^  components;
-
-
-
-
-
+	public: System::IO::Ports::SerialPort^  serialPort1;
 	private:
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-
+	private: System::ComponentModel::IContainer^  components;
+	private:
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -258,6 +186,7 @@ private:
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
+			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->progressBar1 = (gcnew System::Windows::Forms::ProgressBar());
@@ -269,6 +198,28 @@ private:
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
+			this->label22 = (gcnew System::Windows::Forms::Label());
+			this->label23 = (gcnew System::Windows::Forms::Label());
+			this->label24 = (gcnew System::Windows::Forms::Label());
+			this->label25 = (gcnew System::Windows::Forms::Label());
+			this->label26 = (gcnew System::Windows::Forms::Label());
+			this->label20 = (gcnew System::Windows::Forms::Label());
+			this->label21 = (gcnew System::Windows::Forms::Label());
+			this->label18 = (gcnew System::Windows::Forms::Label());
+			this->label19 = (gcnew System::Windows::Forms::Label());
+			this->label17 = (gcnew System::Windows::Forms::Label());
+			this->label16 = (gcnew System::Windows::Forms::Label());
+			this->panel15 = (gcnew System::Windows::Forms::Panel());
+			this->panel14 = (gcnew System::Windows::Forms::Panel());
+			this->panel13 = (gcnew System::Windows::Forms::Panel());
+			this->panel12 = (gcnew System::Windows::Forms::Panel());
+			this->panel11 = (gcnew System::Windows::Forms::Panel());
+			this->panel10 = (gcnew System::Windows::Forms::Panel());
+			this->panel9 = (gcnew System::Windows::Forms::Panel());
+			this->panel8 = (gcnew System::Windows::Forms::Panel());
+			this->panel7 = (gcnew System::Windows::Forms::Panel());
+			this->panel6 = (gcnew System::Windows::Forms::Panel());
+			this->panel5 = (gcnew System::Windows::Forms::Panel());
 			this->panel4 = (gcnew System::Windows::Forms::Panel());
 			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
 			this->label13 = (gcnew System::Windows::Forms::Label());
@@ -282,7 +233,8 @@ private:
 			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
-			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
 			this->as->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->panel2->SuspendLayout();
@@ -305,8 +257,8 @@ private:
 			// serialPort1
 			// 
 			this->serialPort1->BaudRate = 19200;
-			this->serialPort1->Handshake = System::IO::Ports::Handshake::RequestToSendXOnXOff;
 			this->serialPort1->PortName = L"COM6";
+			this->serialPort1->ReceivedBytesThreshold = 16;
 			this->serialPort1->DataReceived += gcnew System::IO::Ports::SerialDataReceivedEventHandler(this, &MyForm3::serialPort1_DataReceived);
 			// 
 			// as
@@ -575,6 +527,16 @@ private:
 			this->panel3->Size = System::Drawing::Size(261, 185);
 			this->panel3->TabIndex = 13;
 			// 
+			// button6
+			// 
+			this->button6->Location = System::Drawing::Point(166, 85);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(75, 23);
+			this->button6->TabIndex = 27;
+			this->button6->Text = L"Odœwie¿";
+			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &MyForm3::button6_Click_1);
+			// 
 			// textBox1
 			// 
 			this->textBox1->Enabled = false;
@@ -674,6 +636,28 @@ private:
 			// 
 			this->tabPage2->BackColor = System::Drawing::Color::LightGray;
 			this->tabPage2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->tabPage2->Controls->Add(this->label22);
+			this->tabPage2->Controls->Add(this->label23);
+			this->tabPage2->Controls->Add(this->label24);
+			this->tabPage2->Controls->Add(this->label25);
+			this->tabPage2->Controls->Add(this->label26);
+			this->tabPage2->Controls->Add(this->label20);
+			this->tabPage2->Controls->Add(this->label21);
+			this->tabPage2->Controls->Add(this->label18);
+			this->tabPage2->Controls->Add(this->label19);
+			this->tabPage2->Controls->Add(this->label17);
+			this->tabPage2->Controls->Add(this->label16);
+			this->tabPage2->Controls->Add(this->panel15);
+			this->tabPage2->Controls->Add(this->panel14);
+			this->tabPage2->Controls->Add(this->panel13);
+			this->tabPage2->Controls->Add(this->panel12);
+			this->tabPage2->Controls->Add(this->panel11);
+			this->tabPage2->Controls->Add(this->panel10);
+			this->tabPage2->Controls->Add(this->panel9);
+			this->tabPage2->Controls->Add(this->panel8);
+			this->tabPage2->Controls->Add(this->panel7);
+			this->tabPage2->Controls->Add(this->panel6);
+			this->tabPage2->Controls->Add(this->panel5);
 			this->tabPage2->Controls->Add(this->panel4);
 			this->tabPage2->Controls->Add(this->pictureBox2);
 			this->tabPage2->Location = System::Drawing::Point(4, 22);
@@ -682,6 +666,183 @@ private:
 			this->tabPage2->Size = System::Drawing::Size(725, 400);
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"Online";
+			this->tabPage2->Click += gcnew System::EventHandler(this, &MyForm3::tabPage2_Click);
+			// 
+			// label22
+			// 
+			this->label22->AutoSize = true;
+			this->label22->Location = System::Drawing::Point(407, 185);
+			this->label22->Name = L"label22";
+			this->label22->Size = System::Drawing::Size(19, 13);
+			this->label22->TabIndex = 36;
+			this->label22->Text = L"Vz";
+			// 
+			// label23
+			// 
+			this->label23->AutoSize = true;
+			this->label23->Location = System::Drawing::Point(407, 144);
+			this->label23->Name = L"label23";
+			this->label23->Size = System::Drawing::Size(19, 13);
+			this->label23->TabIndex = 35;
+			this->label23->Text = L"Vy";
+			// 
+			// label24
+			// 
+			this->label24->AutoSize = true;
+			this->label24->Location = System::Drawing::Point(405, 113);
+			this->label24->Name = L"label24";
+			this->label24->Size = System::Drawing::Size(19, 13);
+			this->label24->TabIndex = 34;
+			this->label24->Text = L"Vx";
+			// 
+			// label25
+			// 
+			this->label25->AutoSize = true;
+			this->label25->Location = System::Drawing::Point(409, 78);
+			this->label25->Name = L"label25";
+			this->label25->Size = System::Drawing::Size(46, 13);
+			this->label25->TabIndex = 33;
+			this->label25->Text = L"KR TY£";
+			// 
+			// label26
+			// 
+			this->label26->AutoSize = true;
+			this->label26->Location = System::Drawing::Point(407, 47);
+			this->label26->Name = L"label26";
+			this->label26->Size = System::Drawing::Size(63, 13);
+			this->label26->TabIndex = 32;
+			this->label26->Text = L"KR PRZÓD";
+			// 
+			// label20
+			// 
+			this->label20->AutoSize = true;
+			this->label20->Location = System::Drawing::Point(557, 214);
+			this->label20->Name = L"label20";
+			this->label20->Size = System::Drawing::Size(39, 13);
+			this->label20->TabIndex = 31;
+			this->label20->Text = L"LEWO";
+			// 
+			// label21
+			// 
+			this->label21->AutoSize = true;
+			this->label21->Location = System::Drawing::Point(555, 183);
+			this->label21->Name = L"label21";
+			this->label21->Size = System::Drawing::Size(48, 13);
+			this->label21->TabIndex = 30;
+			this->label21->Text = L"PRAWO";
+			// 
+			// label18
+			// 
+			this->label18->AutoSize = true;
+			this->label18->Location = System::Drawing::Point(555, 142);
+			this->label18->Name = L"label18";
+			this->label18->Size = System::Drawing::Size(30, 13);
+			this->label18->TabIndex = 29;
+			this->label18->Text = L"DÓ£";
+			// 
+			// label19
+			// 
+			this->label19->AutoSize = true;
+			this->label19->Location = System::Drawing::Point(553, 111);
+			this->label19->Name = L"label19";
+			this->label19->Size = System::Drawing::Size(38, 13);
+			this->label19->TabIndex = 28;
+			this->label19->Text = L"GÓRA";
+			// 
+			// label17
+			// 
+			this->label17->AutoSize = true;
+			this->label17->Location = System::Drawing::Point(557, 76);
+			this->label17->Name = L"label17";
+			this->label17->Size = System::Drawing::Size(28, 13);
+			this->label17->TabIndex = 27;
+			this->label17->Text = L"TY£";
+			// 
+			// label16
+			// 
+			this->label16->AutoSize = true;
+			this->label16->Location = System::Drawing::Point(555, 45);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(45, 13);
+			this->label16->TabIndex = 26;
+			this->label16->Text = L"PRZÓD";
+			// 
+			// panel15
+			// 
+			this->panel15->Location = System::Drawing::Point(508, 209);
+			this->panel15->Name = L"panel15";
+			this->panel15->Size = System::Drawing::Size(28, 30);
+			this->panel15->TabIndex = 25;
+			// 
+			// panel14
+			// 
+			this->panel14->Location = System::Drawing::Point(508, 174);
+			this->panel14->Name = L"panel14";
+			this->panel14->Size = System::Drawing::Size(28, 28);
+			this->panel14->TabIndex = 24;
+			// 
+			// panel13
+			// 
+			this->panel13->Location = System::Drawing::Point(508, 141);
+			this->panel13->Name = L"panel13";
+			this->panel13->Size = System::Drawing::Size(28, 26);
+			this->panel13->TabIndex = 23;
+			// 
+			// panel12
+			// 
+			this->panel12->Location = System::Drawing::Point(508, 106);
+			this->panel12->Name = L"panel12";
+			this->panel12->Size = System::Drawing::Size(28, 28);
+			this->panel12->TabIndex = 22;
+			// 
+			// panel11
+			// 
+			this->panel11->Location = System::Drawing::Point(508, 73);
+			this->panel11->Name = L"panel11";
+			this->panel11->Size = System::Drawing::Size(28, 26);
+			this->panel11->TabIndex = 21;
+			// 
+			// panel10
+			// 
+			this->panel10->Location = System::Drawing::Point(508, 40);
+			this->panel10->Name = L"panel10";
+			this->panel10->Size = System::Drawing::Size(28, 26);
+			this->panel10->TabIndex = 20;
+			// 
+			// panel9
+			// 
+			this->panel9->Location = System::Drawing::Point(369, 174);
+			this->panel9->Name = L"panel9";
+			this->panel9->Size = System::Drawing::Size(27, 28);
+			this->panel9->TabIndex = 19;
+			// 
+			// panel8
+			// 
+			this->panel8->Location = System::Drawing::Point(369, 142);
+			this->panel8->Name = L"panel8";
+			this->panel8->Size = System::Drawing::Size(27, 25);
+			this->panel8->TabIndex = 18;
+			// 
+			// panel7
+			// 
+			this->panel7->Location = System::Drawing::Point(369, 106);
+			this->panel7->Name = L"panel7";
+			this->panel7->Size = System::Drawing::Size(27, 28);
+			this->panel7->TabIndex = 17;
+			// 
+			// panel6
+			// 
+			this->panel6->Location = System::Drawing::Point(369, 73);
+			this->panel6->Name = L"panel6";
+			this->panel6->Size = System::Drawing::Size(27, 26);
+			this->panel6->TabIndex = 16;
+			// 
+			// panel5
+			// 
+			this->panel5->Location = System::Drawing::Point(369, 40);
+			this->panel5->Name = L"panel5";
+			this->panel5->Size = System::Drawing::Size(27, 26);
+			this->panel5->TabIndex = 15;
 			// 
 			// panel4
 			// 
@@ -705,43 +866,43 @@ private:
 			// textBox9
 			// 
 			this->textBox9->Enabled = false;
-			this->textBox9->Location = System::Drawing::Point(105, 92);
+			this->textBox9->Location = System::Drawing::Point(17, 92);
 			this->textBox9->Name = L"textBox9";
 			this->textBox9->ReadOnly = true;
-			this->textBox9->Size = System::Drawing::Size(188, 20);
+			this->textBox9->Size = System::Drawing::Size(316, 20);
 			this->textBox9->TabIndex = 21;
 			// 
 			// label13
 			// 
 			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(6, 73);
+			this->label13->Location = System::Drawing::Point(25, 69);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(63, 13);
+			this->label13->Size = System::Drawing::Size(54, 13);
 			this->label13->TabIndex = 20;
-			this->label13->Text = L"Iloœæ pasów";
+			this->label13->Text = L"Z Zadane";
 			// 
 			// label12
 			// 
 			this->label12->AutoSize = true;
 			this->label12->Location = System::Drawing::Point(25, 47);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(30, 13);
+			this->label12->Size = System::Drawing::Size(58, 13);
 			this->label12->TabIndex = 19;
-			this->label12->Text = L"Oœ Z";
+			this->label12->Text = L"Z aktualne";
 			// 
 			// label11
 			// 
 			this->label11->AutoSize = true;
 			this->label11->Location = System::Drawing::Point(25, 21);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(30, 13);
+			this->label11->Size = System::Drawing::Size(64, 13);
 			this->label11->TabIndex = 18;
-			this->label11->Text = L"Oœ Y";
+			this->label11->Text = L"Numer pasa";
 			// 
 			// textBox6
 			// 
 			this->textBox6->Enabled = false;
-			this->textBox6->Location = System::Drawing::Point(75, 66);
+			this->textBox6->Location = System::Drawing::Point(95, 66);
 			this->textBox6->Name = L"textBox6";
 			this->textBox6->ReadOnly = true;
 			this->textBox6->Size = System::Drawing::Size(58, 20);
@@ -750,7 +911,7 @@ private:
 			// textBox5
 			// 
 			this->textBox5->Enabled = false;
-			this->textBox5->Location = System::Drawing::Point(75, 40);
+			this->textBox5->Location = System::Drawing::Point(95, 40);
 			this->textBox5->Name = L"textBox5";
 			this->textBox5->ReadOnly = true;
 			this->textBox5->Size = System::Drawing::Size(58, 20);
@@ -759,7 +920,7 @@ private:
 			// textBox4
 			// 
 			this->textBox4->Enabled = false;
-			this->textBox4->Location = System::Drawing::Point(75, 14);
+			this->textBox4->Location = System::Drawing::Point(95, 14);
 			this->textBox4->Name = L"textBox4";
 			this->textBox4->ReadOnly = true;
 			this->textBox4->Size = System::Drawing::Size(58, 20);
@@ -768,7 +929,7 @@ private:
 			// textBox8
 			// 
 			this->textBox8->Enabled = false;
-			this->textBox8->Location = System::Drawing::Point(266, 53);
+			this->textBox8->Location = System::Drawing::Point(241, 66);
 			this->textBox8->Name = L"textBox8";
 			this->textBox8->ReadOnly = true;
 			this->textBox8->Size = System::Drawing::Size(58, 20);
@@ -777,7 +938,7 @@ private:
 			// textBox7
 			// 
 			this->textBox7->Enabled = false;
-			this->textBox7->Location = System::Drawing::Point(266, 22);
+			this->textBox7->Location = System::Drawing::Point(241, 40);
 			this->textBox7->Name = L"textBox7";
 			this->textBox7->ReadOnly = true;
 			this->textBox7->Size = System::Drawing::Size(58, 20);
@@ -786,40 +947,36 @@ private:
 			// label15
 			// 
 			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(215, 56);
+			this->label15->Location = System::Drawing::Point(177, 69);
 			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(45, 13);
+			this->label15->Size = System::Drawing::Size(54, 13);
 			this->label15->TabIndex = 12;
-			this->label15->Text = L"Szablon";
+			this->label15->Text = L"Y Zadane";
 			// 
 			// label14
 			// 
 			this->label14->AutoSize = true;
-			this->label14->Location = System::Drawing::Point(201, 25);
+			this->label14->Location = System::Drawing::Point(177, 47);
 			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(59, 13);
+			this->label14->Size = System::Drawing::Size(58, 13);
 			this->label14->TabIndex = 11;
-			this->label14->Text = L"Ustawienia";
+			this->label14->Text = L"Y aktualne";
 			// 
 			// pictureBox2
 			// 
 			this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox2->Location = System::Drawing::Point(9, 6);
+			this->pictureBox2->Location = System::Drawing::Point(21, 16);
 			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(707, 264);
+			this->pictureBox2->Size = System::Drawing::Size(176, 211);
 			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox2->TabIndex = 5;
 			this->pictureBox2->TabStop = false;
 			// 
-			// button6
+			// timer1
 			// 
-			this->button6->Location = System::Drawing::Point(166, 85);
-			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(75, 23);
-			this->button6->TabIndex = 27;
-			this->button6->Text = L"Odœwie¿";
-			this->button6->UseVisualStyleBackColor = true;
-			this->button6->Click += gcnew System::EventHandler(this, &MyForm3::button6_Click_1);
+			this->timer1->Enabled = true;
+			this->timer1->Interval = 2000;
+			this->timer1->Tick += gcnew System::EventHandler(this, &MyForm3::timer1_Tick);
 			// 
 			// MyForm3
 			// 
@@ -847,6 +1004,7 @@ private:
 			this->panel3->ResumeLayout(false);
 			this->panel3->PerformLayout();
 			this->tabPage2->ResumeLayout(false);
+			this->tabPage2->PerformLayout();
 			this->panel4->ResumeLayout(false);
 			this->panel4->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
@@ -880,139 +1038,120 @@ private:
 			return crc;
 		}
 
-		// find available ports
 	private: void findPorts(void)
 	{
-				 // get port names
-				 array<Object^>^ objectArray = SerialPort::GetPortNames();
-				 // add string array to combobox
-				 this->comboBox1->Items->AddRange(objectArray);
-
+		array<Object^>^ objectArray = SerialPort::GetPortNames();
+		this->comboBox1->Items->AddRange(objectArray);
 	}
 	public: void wyslij(void){
-				textBox3->Clear();
-				// array<System::Byte>^ ramka = gcnew array<System::Byte>(8);
-				unsigned char ramka[8];
-				//array<unsigned char> ^ramka;
-				array<Byte>^ transmit = gcnew array< Byte >(8);
-				rozmiar = 8;
-				ramka[0] = 0x01;
-				ramka[1] = 0x10;
-				ramka[2] = 0x00;
-				ramka[3] = 0x01;
-				ramka[4] = Convert::ToInt32(this->numericUpDown2->Value);
-				ramka[5] = Convert::ToInt32(this->numericUpDown3->Value);
-				crc = ModbusCRC(ramka, rozmiar - 2);
-				ramka[rozmiar - 2] = Convert::ToInt32(crc);
-				crc >>= 8;
-				ramka[rozmiar - 1] = Convert::ToInt32(crc);
+		textBox3->Clear();
+		// array<System::Byte>^ ramka = gcnew array<System::Byte>(8);
+		unsigned char ramka[8];
+		array<Byte>^ transmit = gcnew array< Byte >(8);
+		rozmiar = 8;
+		ramka[0] = 0x01;
+		ramka[1] = 0x10;
+		ramka[2] = 0x00;
+		ramka[3] = 0x01;
+		ramka[4] = Convert::ToInt32(this->numericUpDown2->Value);
+		ramka[5] = Convert::ToInt32(this->numericUpDown3->Value);
+		crc = ModbusCRC(ramka, rozmiar - 2);
+		ramka[rozmiar - 2] = Convert::ToInt32(crc);
+		crc >>= 8;
+		ramka[rozmiar - 1] = Convert::ToInt32(crc);
 
-				//	 serialPort1->Write(transmit, 0, transmit->Length);
-				for (int i = 0; i < 8; i++){
-					transmit[i] = Convert::ToByte(ramka[i]);
-					// textBox3->AppendText(ramka[i].ToString("X2") + " ");
-					textBox3->AppendText(ramka[i].ToString("X2"));
-
-				}
-				String^ name = this->serialPort1->PortName;
-				// grab text and store in send buffer
-				String^ message = this->textBox3->Text;
-				// write to serial
-				if (this->serialPort1->IsOpen)
-					//this->_serialPort->WriteLine(String::Format("<{0}>: {1}",name,message));
-					this->serialPort1->Write(transmit, 0, transmit->Length);
-				else
-					this->textBox1->Text = "Port jest zamkniêty";
+		for (int i = 0; i < 8; i++){
+			transmit[i] = Convert::ToByte(ramka[i]);
+			textBox3->AppendText(ramka[i].ToString("X2"));
+		}
+		String^ name = this->serialPort1->PortName;
+		String^ message = this->textBox3->Text;
+		if (this->serialPort1->IsOpen)
+			this->serialPort1->Write(transmit, 0, transmit->Length);
+		else
+			this->textBox1->Text = "Port jest zamkniêty";
 	}
-
-			int kupa = 10;
+	int kupa = 10;
 	public: void wyslij2(void){
-				textBox2->Clear();
-				array<Byte>^ transmit2 = gcnew array< Byte >(600);
-				array<Byte>^ transmit3 = gcnew array< Byte >(600);
-				int gowno = 3000;
-				unsigned int temp;
-				int n = 0;
-				int c = 0;
-				//	array<System::Byte>^ ramka2 = gcnew array<System::Byte>(260);
-				unsigned char ramka2[600];
-				unsigned char ramka3[600];
-				ramka2[0] = 0x01;
-				ramka2[1] = 0x10;
-				ramka2[2] = 0x00;
-				ramka2[3] = 0x02;
-				ramka2[4] = zlicz * 2;
-				ramka3[0] = 0x01;
-				ramka3[1] = 0x10;
-				ramka3[2] = 0x00;
-				ramka3[3] = 0x03;
-				ramka3[4] = zlicz * 2;
-				String^m;
-				for (int i = 0; i < dataGridView1->RowCount; i++){
-					m = Convert::ToString(dataGridView1->Rows[i]->Cells[1]->Value);
-					String^ correctString = m->Replace(",", "");
-					//temp *= 10;
-					//textBox2->AppendText(temp.ToString());
-					temp = Convert::ToInt32(correctString);
-					ramka2[5 + n] = temp;
-					temp >>= 8;
+		textBox2->Clear();
+		array<Byte>^ transmit2 = gcnew array< Byte >(600);
+		array<Byte>^ transmit3 = gcnew array< Byte >(600);
+		int gowno = 3000;
+		unsigned int temp;
+		int n = 0;
+		int c = 0;
+		//	array<System::Byte>^ ramka2 = gcnew array<System::Byte>(260);
+		unsigned char ramka2[600];
+		unsigned char ramka3[600];
+		ramka2[0] = 0x01;
+		ramka2[1] = 0x10;
+		ramka2[2] = 0x00;
+		ramka2[3] = 0x02;
+		ramka2[4] = zlicz * 2;
+		ramka3[0] = 0x01;
+		ramka3[1] = 0x10;
+		ramka3[2] = 0x00;
+		ramka3[3] = 0x03;
+		ramka3[4] = zlicz * 2;
+		String^m;
+		for (int i = 0; i < dataGridView1->RowCount; i++){
+			m = Convert::ToString(dataGridView1->Rows[i]->Cells[1]->Value);
+			String^ correctString = m->Replace(",", "");
+			//temp *= 10;
+			//textBox2->AppendText(temp.ToString());
+			temp = Convert::ToInt32(correctString);
+			ramka2[5 + n] = temp;
+			temp >>= 8;
 
-					ramka2[6 + n] = temp;
-					n += 2;
-				}
-				for (int i = 0; i < dataGridView1->RowCount; i++){
-					m = Convert::ToString(dataGridView1->Rows[i]->Cells[2]->Value);
-					String^ correctString = m->Replace(",", "");
-					//temp *= 10;
-					//textBox2->AppendText(temp.ToString());
-					temp = Convert::ToInt32(correctString);
-					ramka3[5 + c] = temp;
-					temp >>= 8;
+			ramka2[6 + n] = temp;
+			n += 2;
+		}
+		for (int i = 0; i < dataGridView1->RowCount; i++){
+			m = Convert::ToString(dataGridView1->Rows[i]->Cells[2]->Value);
+			String^ correctString = m->Replace(",", "");
+			//temp *= 10;
+			//textBox2->AppendText(temp.ToString());
+			temp = Convert::ToInt32(correctString);
+			ramka3[5 + c] = temp;
+			temp >>= 8;
 
-					ramka3[6 + c] = temp;
-					c += 2;
-				}
+			ramka3[6 + c] = temp;
+			c += 2;
+		}
 
-				rozmiar2 = (dataGridView1->RowCount) * 2 + 7;
-				//	rozmiar2 = 7;
-				crc = ModbusCRC(ramka2, rozmiar2 - 2);
-				ramka2[rozmiar2 - 2] = Convert::ToInt32(crc);
-				crc >>= 8;
-				ramka2[rozmiar2 - 1] = Convert::ToInt32(crc);
+		rozmiar2 = (dataGridView1->RowCount) * 2 + 7;
+		//	rozmiar2 = 7;
+		crc = ModbusCRC(ramka2, rozmiar2 - 2);
+		ramka2[rozmiar2 - 2] = Convert::ToInt32(crc);
+		crc >>= 8;
+		ramka2[rozmiar2 - 1] = Convert::ToInt32(crc);
 
-				rozmiar3 = (dataGridView1->RowCount) * 2 + 7;
-				//	rozmiar2 = 7;
-				crc = ModbusCRC(ramka3, rozmiar3 - 2);
-				ramka3[rozmiar3 - 2] = Convert::ToInt32(crc);
-				crc >>= 8;
-				ramka3[rozmiar3 - 1] = Convert::ToInt32(crc);
-				for (int i = 0; i < (dataGridView1->RowCount) * 2 + 7; i++){
-					transmit2[i] = Convert::ToByte(ramka2[i]);
-					textBox2->AppendText(ramka2[i].ToString("X2"));
-				}
-				textBox2->AppendText("  ");
-				for (int i = 0; i < (dataGridView1->RowCount) * 2 + 7; i++){
-					transmit3[i] = Convert::ToByte(ramka3[i]);
-					textBox2->AppendText(ramka3[i].ToString("X2"));
-				}
-
-
-				String^ name = this->serialPort1->PortName;
-				// write to serial
-				if (this->serialPort1->IsOpen){
-					//this->_serialPort->WriteLine(String::Format("<{0}>: {1}",name,message));
-					this->serialPort1->Write(transmit2, 0, transmit2->Length);
-					Sleep(200);
-					this->serialPort1->Write(transmit3, 0, transmit3->Length);
-				}
-				else
-					this->textBox1->Text = "Port jest zamkniety";
+		rozmiar3 = (dataGridView1->RowCount) * 2 + 7;
+		//	rozmiar2 = 7;
+		crc = ModbusCRC(ramka3, rozmiar3 - 2);
+		ramka3[rozmiar3 - 2] = Convert::ToInt32(crc);
+		crc >>= 8;
+		ramka3[rozmiar3 - 1] = Convert::ToInt32(crc);
+		for (int i = 0; i < (dataGridView1->RowCount) * 2 + 7; i++){
+			transmit2[i] = Convert::ToByte(ramka2[i]);
+			textBox2->AppendText(ramka2[i].ToString("X2"));
+		}
+		textBox2->AppendText("  ");
+		for (int i = 0; i < (dataGridView1->RowCount) * 2 + 7; i++){
+			transmit3[i] = Convert::ToByte(ramka3[i]);
+			textBox2->AppendText(ramka3[i].ToString("X2"));
+		}
+		String^ name = this->serialPort1->PortName;
+		if (this->serialPort1->IsOpen){
+			this->serialPort1->Write(transmit2, 0, transmit2->Length);
+			Sleep(200);
+			this->serialPort1->Write(transmit3, 0, transmit3->Length);
+		}
+		else
+			this->textBox1->Text = "Port jest zamkniety";
 	}
-
-			int zlicz = 0;
+	int zlicz = 0;
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-
-
 
 	}
 
@@ -1028,279 +1167,231 @@ private:
 
 	}
 	private: System::Void button1_Click_2(System::Object^  sender, System::EventArgs^  e) {
-				 this->button2->Enabled = true;
-				 this->dataGridView1->Enabled = true;
-				 wyslij(); //budowa ramki
-				 // add sender name
-
-
+		this->button2->Enabled = true;
+		this->dataGridView1->Enabled = true;
+		wyslij(); //budowa ramki
 	}
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 	}
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
-				 this->textBox1->Text = String::Empty;
-				 if (this->comboBox1->Text == String::Empty || this->comboBox2->Text == String::Empty)
-					 this->textBox1->Text = "Proszê wybrac port";
-				 else {
-					 try{
-						 // make sure port isn't open	
-						 if (!this->serialPort1->IsOpen){
-							 this->serialPort1->PortName = this->comboBox1->Text;
-							 //this->textBox1->Text=this->comboBox1->Text;
-							 this->serialPort1->BaudRate = Int32::Parse(this->comboBox2->Text);
-							 //this->textBox1->Text=this->comboBox2->Text;
-							 // this->textBox2->Text = "Enter Message Here";
-							 //open serial port 
-							 this->serialPort1->Open();
-							 this->progressBar1->Value = 100;
-						 }
-						 else
-							 this->textBox1->Text = "Port jest zamkniêty";
-					 }
-					 catch (UnauthorizedAccessException^){
-						 this->textBox1->Text = "B³¹d po³¹czenia. Spróbuj ponownie.";
-					 }
-				 }
+		this->textBox1->Text = String::Empty;
+		if (this->comboBox1->Text == String::Empty || this->comboBox2->Text == String::Empty)
+			this->textBox1->Text = "Proszê wybrac port";
+		else {
+			try{
+				if (!this->serialPort1->IsOpen){
+					this->serialPort1->PortName = this->comboBox1->Text;
+					this->serialPort1->BaudRate = Int32::Parse(this->comboBox2->Text);
+					this->serialPort1->Open();
+					this->progressBar1->Value = 100;
+				}
+				else
+					this->textBox1->Text = "Port jest zamkniêty";
+			}
+			catch (UnauthorizedAccessException^){
+				this->textBox1->Text = "B³¹d po³¹czenia. Spróbuj ponownie.";
+			}
+		}
 	}
 	private: System::Void progressBar1_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
 	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
-				 //close serialPort
-				 this->serialPort1->Close();
-				 // update progress bar
-				 this->progressBar1->Value = 0;
-				 // Enable read button
-				 this->button4->Enabled = true;
-				 // Enable the init button
-				 this->button1->Enabled = true;
-
+		this->serialPort1->Close();
+		this->progressBar1->Value = 0;
+		this->button4->Enabled = true;
+		this->button1->Enabled = true;
 	}
 	private: System::Void button1_Click_3(System::Object^  sender, System::EventArgs^  e) {
-				 this->button2->Enabled = true;
-				 this->dataGridView1->Enabled = true;
-				 wyslij(); //budowa ramki
-				 // add sender name
-				 String^ name = this->serialPort1->PortName;
-				 // grab text and store in send buffer
-				 String^ message = this->textBox3->Text;
-				 // write to serial
-				 if (this->serialPort1->IsOpen)
-					 //this->_serialPort->WriteLine(String::Format("<{0}>: {1}",name,message));
-					 this->serialPort1->WriteLine(message);
-
-				 else
-					 this->textBox1->Text = "Port jest zamkniêty";
+		this->button2->Enabled = true;
+		this->dataGridView1->Enabled = true;
+		wyslij(); //budowa ramki
+		String^ name = this->serialPort1->PortName;
+		String^ message = this->textBox3->Text;
+		if (this->serialPort1->IsOpen)
+			this->serialPort1->WriteLine(message);
+		else
+			this->textBox1->Text = "Port jest zamkniêty";
 	}
 	private: System::Void button2_Click_1(System::Object^  sender, System::EventArgs^  e) {
-				 //	 OpenFileDialog^ ofd = gcnew OpenFileDialog();
-				 //insert here the filter if you want
-				 //ofd->Filter..
-				 //	 if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
 
+		dataGridView1->Enabled = true;
+		dataGridView1->Rows->Clear();
+		zlicz = 0;
+		Stream^ myStream;
+		OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog;
+		String ^ktory;
+		openFileDialog1->InitialDirectory = "c:\\";
+		openFileDialog1->Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+		openFileDialog1->FilterIndex = 2;
+		openFileDialog1->RestoreDirectory = true;
+		this->button3->Enabled = true;
+		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK){
 
-				 //	 }
+			if ((myStream = openFileDialog1->OpenFile()) != nullptr){
+				String^ pfad = openFileDialog1->FileName; //Datei zum einlesen 
+				StreamReader^ sr = gcnew StreamReader(pfad); //lese Daten
+				Bitmap^ bmap;
 
-				 dataGridView1->Enabled = true;
-				 dataGridView1->Rows->Clear();
-				 zlicz = 0;
-				 Stream^ myStream;
-				 OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog;
-				 String ^ktory;
-				 openFileDialog1->InitialDirectory = "c:\\";
-				 openFileDialog1->Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-				 openFileDialog1->FilterIndex = 2;
-				 openFileDialog1->RestoreDirectory = true;
-				 this->button3->Enabled = true;
-				 if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK){
-
-					 if ((myStream = openFileDialog1->OpenFile()) != nullptr){
-						 String^ pfad = openFileDialog1->FileName; //Datei zum einlesen 
-						 StreamReader^ sr = gcnew StreamReader(pfad); //lese Daten
-						 Bitmap^ bmap;
-
-						 int n = 1;
-						 while (sr->Peek() >= 0) {
-							 String ^s = sr->ReadLine();
-							 array<String^>^words = s->Split(';');
-							 for (int i = 1; i < words->Length - 1; i += 2){
-								 ktory = words[0];
-								 if (i != 0) zlicz++;
-
-								 dataGridView1->Rows->Add(zlicz, words[i], words[i + 1]);
-
-
-							 }
-							 try{
-								 bmap = gcnew Bitmap(ktory + ".jpg");
-							 }
-							 catch (ArgumentException^){
-								 MessageBox::Show("B³êdna nazwa obrazka!", "Odczyt",
-									 MessageBoxButtons::OK, MessageBoxIcon::Error);
-
-							 }
-							 this->pictureBox1->Image = bmap;
-							 this->pictureBox2->Image = bmap;
-
-						 }
-						 sr->Close();
-					 }
-
-				 }
+				int n = 1;
+				while (sr->Peek() >= 0) {
+					String ^s = sr->ReadLine();
+					array<String^>^words = s->Split(';');
+					for (int i = 1; i < words->Length - 1; i += 2){
+						ktory = words[0];
+						if (i != 0) zlicz++;
+						dataGridView1->Rows->Add(zlicz, words[i], words[i + 1]);
+					}
+					try{
+						bmap = gcnew Bitmap(ktory + ".jpg");
+					}
+					catch (ArgumentException^){
+						MessageBox::Show("B³êdna nazwa obrazka!", "Odczyt",
+							MessageBoxButtons::OK, MessageBoxIcon::Error);
+					}
+					this->pictureBox1->Image = bmap;
+					this->pictureBox2->Image = bmap;
+				}
+				sr->Close();
+			}
+		}
 	}
-
-	
-private: System::Void button3_Click_1(System::Object^  sender, System::EventArgs^  e) {
-			 textBox2->Clear();
-			 wyslij2();
-	
-}
-private: System::Void button4_Click_1(System::Object^  sender, System::EventArgs^  e) {
-			 this->textBox1->Text = String::Empty;
-			 if (this->comboBox1->Text == String::Empty || this->comboBox2->Text == String::Empty)
-				 this->textBox1->Text = "Proszê wybrac port";
-			 else {
-				 try{
-					 // make sure port isn't open	
-					 if (!this->serialPort1->IsOpen){
-						 this->serialPort1->PortName = this->comboBox1->Text;
-						 //this->textBox1->Text=this->comboBox1->Text;
-						 this->serialPort1->BaudRate = Int32::Parse(this->comboBox2->Text);
-						 //this->textBox1->Text=this->comboBox2->Text;
-						 // this->textBox2->Text = "Enter Message Here";
-						 //open serial port 
-						 this->serialPort1->Open();
-						 this->progressBar1->Value = 100;
-					 }
-					 else
-						 this->textBox1->Text = "Port jest zamkniêty";
-				 }
-				 catch (UnauthorizedAccessException^){
-					 this->textBox1->Text = "B³¹d po³¹czenia. Spróbuj ponownie.";
-				 }
-			 }
-}
-private: System::Void button5_Click_1(System::Object^  sender, System::EventArgs^  e) {
-			 //close serialPort
-			 this->serialPort1->Close();
-			 // update progress bar
-			 this->progressBar1->Value = 0;
-			 // Enable read button
-			 this->button4->Enabled = true;
-			 // Enable the init button
-			 this->button1->Enabled = true;
-
-}
+	private: System::Void button3_Click_1(System::Object^  sender, System::EventArgs^  e) {
+		textBox2->Clear();
+		wyslij2();
+	}
+	private: System::Void button4_Click_1(System::Object^  sender, System::EventArgs^  e) {
+		this->textBox1->Text = String::Empty;
+		if (this->comboBox1->Text == String::Empty || this->comboBox2->Text == String::Empty)
+			this->textBox1->Text = "Proszê wybrac port";
+		else {
+			try{
+				if (!this->serialPort1->IsOpen){
+					this->serialPort1->PortName = this->comboBox1->Text;
+					this->serialPort1->BaudRate = Int32::Parse(this->comboBox2->Text);
+					this->serialPort1->Open();
+					this->progressBar1->Value = 100;
+				}
+				else
+					this->textBox1->Text = "Port jest zamkniêty";
+			}
+			catch (UnauthorizedAccessException^){
+				this->textBox1->Text = "B³¹d po³¹czenia. Spróbuj ponownie.";
+			}
+		}
+	}
+	private: System::Void button5_Click_1(System::Object^  sender, System::EventArgs^  e) {
+		this->serialPort1->Close();
+		this->progressBar1->Value = 0;
+		this->button4->Enabled = true;
+		this->button1->Enabled = true;
+	}
 	private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
-				 // check if port is ready for reading
-				 if (this->serialPort1->IsOpen){
-					 // Reset the text in the result label.
-					 this->textBox9->Text = String::Empty;
-
-					 // this will read manually
-					 try{
-						 this->textBox9->Text = this->serialPort1->ReadLine();
-					 }
-					 catch (TimeoutException^){
-						 this->textBox9->Text = "Timeout";
-					 }
-
-				 }
-				 else
-					 // give error warning
-					 this->textBox9->Text = "Port jest zamkniêty";
-
-
+		// check if port is ready for reading
+		if (this->serialPort1->IsOpen){
+			this->textBox9->Text = String::Empty;
+			try{
+				this->textBox9->Text = this->serialPort1->ReadLine();
+			}
+			catch (TimeoutException^){
+				this->textBox9->Text = "Timeout";
+			}
+		}
+		else
+			this->textBox9->Text = "Port jest zamkniêty";
 	}
-private: System::Void textBox9_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void textBox8_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void textBox7_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void label14_Click(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void label15_Click(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void textBox6_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void textBox5_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void textBox4_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void label11_Click(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void label12_Click(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void label13_Click(System::Object^  sender, System::EventArgs^  e) {
-}
+	private: System::Void textBox9_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void textBox8_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void textBox7_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void label14_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void label15_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void textBox6_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void textBox5_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void textBox4_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void label11_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void label12_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void label13_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
 
-		 
-private: System::Void serialPort1_DataReceived(System::Object^  sender, System::IO::Ports::SerialDataReceivedEventArgs^  e) {
-		/*	 int dataLength = serialPort1->BytesToRead;
-			// array<Byte>^ data = gcnew array< Byte >(600);
-		//	 int nbrDataRead = serialPort1->Read(data, 0, dataLength);
-			 int data = serialPort1->ReadByte();
-			 //ASCII -> HEX Conversion
-			 int numbytes = serialPort1->BytesToRead;
-			 array<Byte>^ encodedBytes = gcnew array<Byte>(500);
-			 serialPort1->Read(encodedBytes, 0, numbytes);
-			 String^ myString = serialPort1->ReadLine();
-			 for (int ck = 0; ck < numbytes; ck++){
-				 this->textBox9->AppendText(Convert::ToString(encodedBytes[ck]));
-			 }
-			 */
-			// numbytes = serialPort1->BytesToRead;
-		//	 int bytes = serialPort1->BytesToRead;  //retrieve number of bytes in the buffer
-		//	 serialPort1->Read(encodedBytes, 0, numbytes); //read the data and store it
-			 // Check if incoming data is (78,79,04) Hex - (=N= 100)
-			 /*
-			  numbytes = serialPort1->BytesToRead;
-			  encodedBytes = gcnew array<Byte>(numbytes);
-			  for (int ck = 0; ck < numbytes; ck++){
-			  encodedBytes[ck] = serialPort1->ReadByte();
-			 }
-			*/
-			 //RxString = _serialPort.ReadExisting(); // doesn't Work for all data     
-			// textBox9->Text = textBox9->Text + data1 + "\r\n";
-			 // DATA RECIEVED FROM ARDUINO / DEVICE USING MODBUS PROTOCOL
-			// if (ready_to_read==true){
-				 numbytes = serialPort1->BytesToRead;
-				 //	 int ile;
-				 encodedBytes = gcnew array<Byte>(numbytes);
-				 if (sender == this->serialPort1){
+	public: System::Void serialPort1_DataReceived(System::Object^  sender, System::IO::Ports::SerialDataReceivedEventArgs^  e) {
 
-					 while (this->serialPort1->BytesToRead != 0) {
+		numbytes = serialPort1->BytesToRead;
+		this->timer1->Enabled = true;
+		this->timer1->Start();
+		encodedBytes = gcnew array<Byte>(16);
+		if (sender == this->serialPort1){
+			for (int ck = 0; ck < 16; ck++){
+				encodedBytes[ck] = serialPort1->ReadByte();
+			}
+			this->BeginInvoke(gcnew EventHandler(this, &MyForm3::SetTextCallback), encodedBytes);  //callbeck dla odczytów w innym thread
+		}
+		this->serialPort1->DiscardInBuffer();
+		this->serialPort1->DiscardOutBuffer();
+	}
+	private: System::Void SetTextCallback(System::Object^ sender, System::EventArgs^ e){
+		if (sender != this->serialPort1){
 
-						 for (int ck = 0; ck < numbytes; ck++){
-							 encodedBytes[ck] = serialPort1->ReadByte();
-							 this->Invoke(gcnew EventHandler(this, &MyForm3::SetTextCallback));
-						 }
-					
-					 }
+			if (numbytes==16){
+				textBox9->Clear();
+				for (ck = 0; ck < numbytes; ck++){
+					this->textBox9->Text += ((encodedBytes[ck].ToString("X2")));
+				}
 
-				 }
-			// }
-			 //this->BeginInvoke( gcnew invokeDelegate( this, &Form1::SetTextCallback));
-}
-private: System::Void SetTextCallback(System::Object^ sender, System::EventArgs^ e){
-			 if (sender != this->serialPort1){
-				
-				 if (numbytes == 8){
-					 textBox9->Clear();
-					 // ready_to_read = false;
-					 //  this->textBox9->AppendText (data1); 
-					 for (ck = 0; ck < numbytes; ck++){
-						 this->textBox9->Text += ((encodedBytes[ck].ToString("X2")));
-					 }
-				 }
-			 }
+				int numerPasa, ZAktualne, ZZadane, YAktualne, YZadane, kontrolki;
+					numerPasa = (256 * encodedBytes[2] + encodedBytes[3]);
+					ZAktualne = (256 * encodedBytes[4] + encodedBytes[5]);
+					ZZadane = (256 * encodedBytes[6] + encodedBytes[7]);
+					YAktualne = (256 * encodedBytes[8] + encodedBytes[9]);
+					YZadane = (256 * encodedBytes[10] + encodedBytes[11]);
+					kontrolki = (256 * encodedBytes[12] + encodedBytes[13]);
+					this->textBox4->Text = numerPasa.ToString();
+					this->textBox5->Text = (((ZAktualne / 10).ToString() + "." +( ZAktualne%10 ).ToString("X2")));
+					this->textBox6->Text = (((ZZadane / 10).ToString() + "." +( ZZadane%10 ).ToString("X2")));
+					this->textBox7->Text = (((YAktualne / 10).ToString() + "." +( YAktualne%10 ).ToString("X2")));
+					this->textBox8->Text = (((YZadane / 10).ToString() + "." +( YZadane%10 ).ToString("X2")));
+					if (kontrolki & 0x01) this->panel5->BackColor = Color::Green;
+					else if (!(kontrolki & 0x01))  this->panel5->BackColor = Color::Red;
+					if (kontrolki & 0x02) this->panel6->BackColor = Color::Green;
+					else if (!(kontrolki & 0x02))  this->panel6->BackColor = Color::Red;
+					if (kontrolki & 0x04) this->panel7->BackColor = Color::Green;
+					else if (!(kontrolki & 0x04))  this->panel7->BackColor = Color::Red;
+					if (kontrolki & 0x08) this->panel8->BackColor = Color::Green;
+					else if (!(kontrolki & 0x08))  this->panel8->BackColor = Color::Red;
+					if (kontrolki & 0x10) this->panel9->BackColor = Color::Green;
+					else if (!(kontrolki & 0x10))  this->panel9->BackColor = Color::Red;
+					if (kontrolki & 0x20) this->panel10->BackColor = Color::Green;
+					else if (!(kontrolki & 0x20))  this->panel10->BackColor = Color::Red;
+					if (kontrolki & 0x40) this->panel11->BackColor = Color::Green;
+					else if (!(kontrolki & 0x40))  this->panel11->BackColor = Color::Red;
+					if (kontrolki & 0x80) this->panel12->BackColor = Color::Green;
+					else if (!(kontrolki & 0x80))  this->panel12->BackColor = Color::Red;
+					if (kontrolki & 0x100) this->panel13 ->BackColor = Color::Green;
+					else if (!(kontrolki & 0x100))  this->panel13->BackColor = Color::Red;
+					if (kontrolki & 0x200) this->panel14->BackColor = Color::Green;
+					else if (!(kontrolki & 0x200))  this->panel14->BackColor = Color::Red;
+					if (kontrolki & 0x400) this->panel15->BackColor = Color::Green;
+					else if (!(kontrolki & 0x400))  this->panel15->BackColor = Color::Red;
+				}
+		}
+	}
 
-			// ready_to_read = true;
-}
-
-private: System::Void button6_Click_1(System::Object^  sender, System::EventArgs^  e) {
-			 findPorts();
-}
+	private: System::Void button6_Click_1(System::Object^  sender, System::EventArgs^  e) {
+		this->comboBox1->Items->Clear();
+		findPorts();
+	}
+	private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void tabPage2_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
 };
 }
 

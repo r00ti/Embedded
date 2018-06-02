@@ -25,36 +25,12 @@ namespace SterownikSP01 {
 		String ^portnames2;
 		String ^bouds2;
 
-
 	public:
 	private: System::Windows::Forms::Button^  button3;
-
 	private: System::Windows::Forms::Button^  button5;
 	private: System::Windows::Forms::Button^  button6;
-
-
-
-
-
-
-
-
 	private: System::Windows::Forms::Timer^  timer1;
-
-
-
-
 	private: System::Windows::Forms::Button^  button7;
-
-
-
-
-
-
-
-
-	
-	
 	public :
 	
 		
@@ -73,14 +49,12 @@ namespace SterownikSP01 {
 		/// </summary>
 		~MyForm()
 		{
-						
+		
 			if (components)
 			{
-			
 				delete components;
 			}
 		}
-
 
 	private: System::ComponentModel::IContainer^  components;
 	protected:
@@ -182,24 +156,9 @@ namespace SterownikSP01 {
 				 this->Hide();
 				 okno->ShowDialog();
 				 this->Show();
-
 	}
-
-
-			 
+	 
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-				 /* toolStripStatusLabel2->Text = "";
-				 toolStripStatusLabel4->Text = "";
-			//	 toolStripStatusLabel6->Text = serialPort1->IsOpen.ToString();
-				 this->toolStripStatusLabel7->Text = "Port jest zamkniety!";
-				 button3->Enabled = false;
-				 button6->Enabled = false;
-				 statusStrip1->BackColor = Color::Red;
-				 MessageBox::Show("Roz³¹czono z SP-01", "Po³¹czenie",
-					 MessageBoxButtons::OK, MessageBoxIcon::Information);
-				 polaczony = false;*/
-				
-
 	}
 private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
 			 MyForm2 ^okno = gcnew MyForm2();
@@ -220,7 +179,6 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 	this->Hide();
 	okno->ShowDialog();
 	this->Show();
-
 }
 // wyliczenie CRC dla  protokolu MODBUS
 private: unsigned short ModbusCRC2(unsigned char * buf, int size){

@@ -76,7 +76,7 @@ namespace SterownikSP01 {
 	private: System::Windows::Forms::TabPage^  tabPage2;
 	public:
 	private: System::Windows::Forms::Panel^  panel4;
-	private: System::Windows::Forms::PictureBox^  pictureBox2;
+
 	private: System::Windows::Forms::TextBox^  textBox8;
 	private: System::Windows::Forms::TextBox^  textBox7;
 	private: System::Windows::Forms::Label^  label15;
@@ -113,6 +113,7 @@ namespace SterownikSP01 {
 	private: System::Windows::Forms::Panel^  panel6;
 	private: System::Windows::Forms::Panel^  panel5;
 	private: System::ComponentModel::BackgroundWorker^  backgroundWorker1;
+	private: System::Windows::Forms::PictureBox^  pictureBox2;
 
 	public:
 		Byte receivs;
@@ -232,9 +233,9 @@ namespace SterownikSP01 {
 			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
 			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->label14 = (gcnew System::Windows::Forms::Label());
-			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->as->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->panel2->SuspendLayout();
@@ -636,6 +637,7 @@ namespace SterownikSP01 {
 			// 
 			this->tabPage2->BackColor = System::Drawing::Color::LightGray;
 			this->tabPage2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->tabPage2->Controls->Add(this->pictureBox2);
 			this->tabPage2->Controls->Add(this->label22);
 			this->tabPage2->Controls->Add(this->label23);
 			this->tabPage2->Controls->Add(this->label24);
@@ -659,7 +661,6 @@ namespace SterownikSP01 {
 			this->tabPage2->Controls->Add(this->panel6);
 			this->tabPage2->Controls->Add(this->panel5);
 			this->tabPage2->Controls->Add(this->panel4);
-			this->tabPage2->Controls->Add(this->pictureBox2);
 			this->tabPage2->Location = System::Drawing::Point(4, 22);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
@@ -671,7 +672,7 @@ namespace SterownikSP01 {
 			// label22
 			// 
 			this->label22->AutoSize = true;
-			this->label22->Location = System::Drawing::Point(407, 185);
+			this->label22->Location = System::Drawing::Point(538, 173);
 			this->label22->Name = L"label22";
 			this->label22->Size = System::Drawing::Size(19, 13);
 			this->label22->TabIndex = 36;
@@ -680,7 +681,7 @@ namespace SterownikSP01 {
 			// label23
 			// 
 			this->label23->AutoSize = true;
-			this->label23->Location = System::Drawing::Point(407, 144);
+			this->label23->Location = System::Drawing::Point(540, 135);
 			this->label23->Name = L"label23";
 			this->label23->Size = System::Drawing::Size(19, 13);
 			this->label23->TabIndex = 35;
@@ -689,7 +690,7 @@ namespace SterownikSP01 {
 			// label24
 			// 
 			this->label24->AutoSize = true;
-			this->label24->Location = System::Drawing::Point(405, 113);
+			this->label24->Location = System::Drawing::Point(536, 101);
 			this->label24->Name = L"label24";
 			this->label24->Size = System::Drawing::Size(19, 13);
 			this->label24->TabIndex = 34;
@@ -698,7 +699,7 @@ namespace SterownikSP01 {
 			// label25
 			// 
 			this->label25->AutoSize = true;
-			this->label25->Location = System::Drawing::Point(409, 78);
+			this->label25->Location = System::Drawing::Point(540, 66);
 			this->label25->Name = L"label25";
 			this->label25->Size = System::Drawing::Size(46, 13);
 			this->label25->TabIndex = 33;
@@ -707,7 +708,7 @@ namespace SterownikSP01 {
 			// label26
 			// 
 			this->label26->AutoSize = true;
-			this->label26->Location = System::Drawing::Point(407, 47);
+			this->label26->Location = System::Drawing::Point(538, 35);
 			this->label26->Name = L"label26";
 			this->label26->Size = System::Drawing::Size(63, 13);
 			this->label26->TabIndex = 32;
@@ -716,7 +717,7 @@ namespace SterownikSP01 {
 			// label20
 			// 
 			this->label20->AutoSize = true;
-			this->label20->Location = System::Drawing::Point(557, 214);
+			this->label20->Location = System::Drawing::Point(661, 184);
 			this->label20->Name = L"label20";
 			this->label20->Size = System::Drawing::Size(39, 13);
 			this->label20->TabIndex = 31;
@@ -725,7 +726,7 @@ namespace SterownikSP01 {
 			// label21
 			// 
 			this->label21->AutoSize = true;
-			this->label21->Location = System::Drawing::Point(555, 183);
+			this->label21->Location = System::Drawing::Point(659, 149);
 			this->label21->Name = L"label21";
 			this->label21->Size = System::Drawing::Size(48, 13);
 			this->label21->TabIndex = 30;
@@ -734,7 +735,7 @@ namespace SterownikSP01 {
 			// label18
 			// 
 			this->label18->AutoSize = true;
-			this->label18->Location = System::Drawing::Point(555, 142);
+			this->label18->Location = System::Drawing::Point(662, 114);
 			this->label18->Name = L"label18";
 			this->label18->Size = System::Drawing::Size(30, 13);
 			this->label18->TabIndex = 29;
@@ -743,7 +744,7 @@ namespace SterownikSP01 {
 			// label19
 			// 
 			this->label19->AutoSize = true;
-			this->label19->Location = System::Drawing::Point(553, 111);
+			this->label19->Location = System::Drawing::Point(661, 80);
 			this->label19->Name = L"label19";
 			this->label19->Size = System::Drawing::Size(38, 13);
 			this->label19->TabIndex = 28;
@@ -752,7 +753,7 @@ namespace SterownikSP01 {
 			// label17
 			// 
 			this->label17->AutoSize = true;
-			this->label17->Location = System::Drawing::Point(557, 76);
+			this->label17->Location = System::Drawing::Point(665, 47);
 			this->label17->Name = L"label17";
 			this->label17->Size = System::Drawing::Size(28, 13);
 			this->label17->TabIndex = 27;
@@ -761,7 +762,7 @@ namespace SterownikSP01 {
 			// label16
 			// 
 			this->label16->AutoSize = true;
-			this->label16->Location = System::Drawing::Point(555, 45);
+			this->label16->Location = System::Drawing::Point(663, 14);
 			this->label16->Name = L"label16";
 			this->label16->Size = System::Drawing::Size(45, 13);
 			this->label16->TabIndex = 26;
@@ -769,77 +770,77 @@ namespace SterownikSP01 {
 			// 
 			// panel15
 			// 
-			this->panel15->Location = System::Drawing::Point(508, 209);
+			this->panel15->Location = System::Drawing::Point(616, 178);
 			this->panel15->Name = L"panel15";
 			this->panel15->Size = System::Drawing::Size(28, 30);
 			this->panel15->TabIndex = 25;
 			// 
 			// panel14
 			// 
-			this->panel14->Location = System::Drawing::Point(508, 174);
+			this->panel14->Location = System::Drawing::Point(616, 143);
 			this->panel14->Name = L"panel14";
 			this->panel14->Size = System::Drawing::Size(28, 28);
 			this->panel14->TabIndex = 24;
 			// 
 			// panel13
 			// 
-			this->panel13->Location = System::Drawing::Point(508, 141);
+			this->panel13->Location = System::Drawing::Point(616, 110);
 			this->panel13->Name = L"panel13";
 			this->panel13->Size = System::Drawing::Size(28, 26);
 			this->panel13->TabIndex = 23;
 			// 
 			// panel12
 			// 
-			this->panel12->Location = System::Drawing::Point(508, 106);
+			this->panel12->Location = System::Drawing::Point(616, 75);
 			this->panel12->Name = L"panel12";
 			this->panel12->Size = System::Drawing::Size(28, 28);
 			this->panel12->TabIndex = 22;
 			// 
 			// panel11
 			// 
-			this->panel11->Location = System::Drawing::Point(508, 73);
+			this->panel11->Location = System::Drawing::Point(616, 42);
 			this->panel11->Name = L"panel11";
 			this->panel11->Size = System::Drawing::Size(28, 26);
 			this->panel11->TabIndex = 21;
 			// 
 			// panel10
 			// 
-			this->panel10->Location = System::Drawing::Point(508, 40);
+			this->panel10->Location = System::Drawing::Point(616, 9);
 			this->panel10->Name = L"panel10";
 			this->panel10->Size = System::Drawing::Size(28, 26);
 			this->panel10->TabIndex = 20;
 			// 
 			// panel9
 			// 
-			this->panel9->Location = System::Drawing::Point(369, 174);
+			this->panel9->Location = System::Drawing::Point(500, 162);
 			this->panel9->Name = L"panel9";
 			this->panel9->Size = System::Drawing::Size(27, 28);
 			this->panel9->TabIndex = 19;
 			// 
 			// panel8
 			// 
-			this->panel8->Location = System::Drawing::Point(369, 142);
+			this->panel8->Location = System::Drawing::Point(500, 130);
 			this->panel8->Name = L"panel8";
 			this->panel8->Size = System::Drawing::Size(27, 25);
 			this->panel8->TabIndex = 18;
 			// 
 			// panel7
 			// 
-			this->panel7->Location = System::Drawing::Point(369, 106);
+			this->panel7->Location = System::Drawing::Point(500, 94);
 			this->panel7->Name = L"panel7";
 			this->panel7->Size = System::Drawing::Size(27, 28);
 			this->panel7->TabIndex = 17;
 			// 
 			// panel6
 			// 
-			this->panel6->Location = System::Drawing::Point(369, 73);
+			this->panel6->Location = System::Drawing::Point(500, 61);
 			this->panel6->Name = L"panel6";
 			this->panel6->Size = System::Drawing::Size(27, 26);
 			this->panel6->TabIndex = 16;
 			// 
 			// panel5
 			// 
-			this->panel5->Location = System::Drawing::Point(369, 40);
+			this->panel5->Location = System::Drawing::Point(500, 28);
 			this->panel5->Name = L"panel5";
 			this->panel5->Size = System::Drawing::Size(27, 26);
 			this->panel5->TabIndex = 15;
@@ -858,125 +859,147 @@ namespace SterownikSP01 {
 			this->panel4->Controls->Add(this->textBox7);
 			this->panel4->Controls->Add(this->label15);
 			this->panel4->Controls->Add(this->label14);
-			this->panel4->Location = System::Drawing::Point(172, 276);
+			this->panel4->Location = System::Drawing::Point(6, 15);
 			this->panel4->Name = L"panel4";
-			this->panel4->Size = System::Drawing::Size(364, 121);
+			this->panel4->Size = System::Drawing::Size(476, 193);
 			this->panel4->TabIndex = 13;
 			// 
 			// textBox9
 			// 
 			this->textBox9->Enabled = false;
-			this->textBox9->Location = System::Drawing::Point(17, 92);
+			this->textBox9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->textBox9->Location = System::Drawing::Point(19, 148);
 			this->textBox9->Name = L"textBox9";
 			this->textBox9->ReadOnly = true;
-			this->textBox9->Size = System::Drawing::Size(316, 20);
+			this->textBox9->Size = System::Drawing::Size(427, 26);
 			this->textBox9->TabIndex = 21;
 			// 
 			// label13
 			// 
 			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(25, 69);
+			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label13->Location = System::Drawing::Point(29, 106);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(54, 13);
+			this->label13->Size = System::Drawing::Size(78, 20);
 			this->label13->TabIndex = 20;
 			this->label13->Text = L"Z Zadane";
 			// 
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(25, 47);
+			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label12->Location = System::Drawing::Point(29, 65);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(58, 13);
+			this->label12->Size = System::Drawing::Size(84, 20);
 			this->label12->TabIndex = 19;
 			this->label12->Text = L"Z aktualne";
 			// 
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(25, 21);
+			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label11->Location = System::Drawing::Point(136, 18);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(64, 13);
+			this->label11->Size = System::Drawing::Size(95, 20);
 			this->label11->TabIndex = 18;
 			this->label11->Text = L"Numer pasa";
 			// 
 			// textBox6
 			// 
 			this->textBox6->Enabled = false;
-			this->textBox6->Location = System::Drawing::Point(95, 66);
+			this->textBox6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->textBox6->Location = System::Drawing::Point(126, 97);
 			this->textBox6->Name = L"textBox6";
 			this->textBox6->ReadOnly = true;
-			this->textBox6->Size = System::Drawing::Size(58, 20);
+			this->textBox6->Size = System::Drawing::Size(99, 35);
 			this->textBox6->TabIndex = 17;
 			// 
 			// textBox5
 			// 
 			this->textBox5->Enabled = false;
-			this->textBox5->Location = System::Drawing::Point(95, 40);
+			this->textBox5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->textBox5->Location = System::Drawing::Point(126, 56);
 			this->textBox5->Name = L"textBox5";
 			this->textBox5->ReadOnly = true;
-			this->textBox5->Size = System::Drawing::Size(58, 20);
+			this->textBox5->Size = System::Drawing::Size(99, 35);
 			this->textBox5->TabIndex = 16;
 			// 
 			// textBox4
 			// 
 			this->textBox4->Enabled = false;
-			this->textBox4->Location = System::Drawing::Point(95, 14);
+			this->textBox4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->textBox4->Location = System::Drawing::Point(237, 8);
 			this->textBox4->Name = L"textBox4";
 			this->textBox4->ReadOnly = true;
-			this->textBox4->Size = System::Drawing::Size(58, 20);
+			this->textBox4->Size = System::Drawing::Size(99, 35);
 			this->textBox4->TabIndex = 15;
 			// 
 			// textBox8
 			// 
 			this->textBox8->Enabled = false;
-			this->textBox8->Location = System::Drawing::Point(241, 66);
+			this->textBox8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->textBox8->Location = System::Drawing::Point(342, 97);
 			this->textBox8->Name = L"textBox8";
 			this->textBox8->ReadOnly = true;
-			this->textBox8->Size = System::Drawing::Size(58, 20);
+			this->textBox8->Size = System::Drawing::Size(104, 35);
 			this->textBox8->TabIndex = 14;
 			// 
 			// textBox7
 			// 
 			this->textBox7->Enabled = false;
-			this->textBox7->Location = System::Drawing::Point(241, 40);
+			this->textBox7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->textBox7->Location = System::Drawing::Point(342, 55);
 			this->textBox7->Name = L"textBox7";
 			this->textBox7->ReadOnly = true;
-			this->textBox7->Size = System::Drawing::Size(58, 20);
+			this->textBox7->Size = System::Drawing::Size(104, 35);
 			this->textBox7->TabIndex = 13;
 			// 
 			// label15
 			// 
 			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(177, 69);
+			this->label15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label15->Location = System::Drawing::Point(251, 105);
 			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(54, 13);
+			this->label15->Size = System::Drawing::Size(79, 20);
 			this->label15->TabIndex = 12;
 			this->label15->Text = L"Y Zadane";
 			// 
 			// label14
 			// 
 			this->label14->AutoSize = true;
-			this->label14->Location = System::Drawing::Point(177, 47);
+			this->label14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label14->Location = System::Drawing::Point(251, 64);
 			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(58, 13);
+			this->label14->Size = System::Drawing::Size(85, 20);
 			this->label14->TabIndex = 11;
 			this->label14->Text = L"Y aktualne";
-			// 
-			// pictureBox2
-			// 
-			this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox2->Location = System::Drawing::Point(21, 16);
-			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(176, 211);
-			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox2->TabIndex = 5;
-			this->pictureBox2->TabStop = false;
 			// 
 			// timer1
 			// 
 			this->timer1->Enabled = true;
 			this->timer1->Interval = 2000;
 			this->timer1->Tick += gcnew System::EventHandler(this, &MyForm3::timer1_Tick);
+			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pictureBox2->Location = System::Drawing::Point(6, 214);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(713, 181);
+			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox2->TabIndex = 37;
+			this->pictureBox2->TabStop = false;
 			// 
 			// MyForm3
 			// 
@@ -990,7 +1013,7 @@ namespace SterownikSP01 {
 			this->MinimizeBox = false;
 			this->Name = L"MyForm3";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L" ";
+			this->Text = L" Komunikacja";
 			this->as->ResumeLayout(false);
 			this->tabPage1->ResumeLayout(false);
 			this->panel2->ResumeLayout(false);
@@ -1220,7 +1243,7 @@ namespace SterownikSP01 {
 		Stream^ myStream;
 		OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog;
 		String ^ktory;
-		openFileDialog1->InitialDirectory = "c:\\";
+		openFileDialog1->InitialDirectory = "d:\\";
 		openFileDialog1->Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
 		openFileDialog1->FilterIndex = 2;
 		openFileDialog1->RestoreDirectory = true;
@@ -1340,7 +1363,7 @@ namespace SterownikSP01 {
 	private: System::Void SetTextCallback(System::Object^ sender, System::EventArgs^ e){
 		if (sender != this->serialPort1){
 
-			if (numbytes==16){
+		//	if (numbytes==16){
 				textBox9->Clear();
 				for (ck = 0; ck < numbytes; ck++){
 					this->textBox9->Text += ((encodedBytes[ck].ToString("X2")));
@@ -1380,7 +1403,7 @@ namespace SterownikSP01 {
 					else if (!(kontrolki & 0x200))  this->panel14->BackColor = Color::Red;
 					if (kontrolki & 0x400) this->panel15->BackColor = Color::Green;
 					else if (!(kontrolki & 0x400))  this->panel15->BackColor = Color::Red;
-				}
+			//	}
 		}
 	}
 

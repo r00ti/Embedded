@@ -114,6 +114,10 @@ namespace SterownikSP01 {
 	private: System::Windows::Forms::Panel^  panel5;
 	private: System::ComponentModel::BackgroundWorker^  backgroundWorker1;
 	private: System::Windows::Forms::PictureBox^  pictureBox2;
+	private: System::Windows::Forms::TextBox^  textBox11;
+	private: System::Windows::Forms::TextBox^  textBox10;
+	private: System::Windows::Forms::Label^  label28;
+	private: System::Windows::Forms::Label^  label27;
 
 	public:
 		Byte receivs;
@@ -199,6 +203,9 @@ namespace SterownikSP01 {
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
+			this->textBox11 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->label22 = (gcnew System::Windows::Forms::Label());
 			this->label23 = (gcnew System::Windows::Forms::Label());
 			this->label24 = (gcnew System::Windows::Forms::Label());
@@ -235,7 +242,8 @@ namespace SterownikSP01 {
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
-			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->label27 = (gcnew System::Windows::Forms::Label());
+			this->label28 = (gcnew System::Windows::Forms::Label());
 			this->as->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->panel2->SuspendLayout();
@@ -246,8 +254,8 @@ namespace SterownikSP01 {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown2))->BeginInit();
 			this->panel3->SuspendLayout();
 			this->tabPage2->SuspendLayout();
-			this->panel4->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
+			this->panel4->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// openFileDialog1
@@ -258,6 +266,7 @@ namespace SterownikSP01 {
 			// serialPort1
 			// 
 			this->serialPort1->BaudRate = 19200;
+			this->serialPort1->DiscardNull = true;
 			this->serialPort1->PortName = L"COM6";
 			this->serialPort1->ReceivedBytesThreshold = 16;
 			this->serialPort1->DataReceived += gcnew System::IO::Ports::SerialDataReceivedEventHandler(this, &MyForm3::serialPort1_DataReceived);
@@ -637,6 +646,10 @@ namespace SterownikSP01 {
 			// 
 			this->tabPage2->BackColor = System::Drawing::Color::LightGray;
 			this->tabPage2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->tabPage2->Controls->Add(this->label28);
+			this->tabPage2->Controls->Add(this->label27);
+			this->tabPage2->Controls->Add(this->textBox11);
+			this->tabPage2->Controls->Add(this->textBox10);
 			this->tabPage2->Controls->Add(this->pictureBox2);
 			this->tabPage2->Controls->Add(this->label22);
 			this->tabPage2->Controls->Add(this->label23);
@@ -668,6 +681,38 @@ namespace SterownikSP01 {
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"Online";
 			this->tabPage2->Click += gcnew System::EventHandler(this, &MyForm3::tabPage2_Click);
+			// 
+			// textBox11
+			// 
+			this->textBox11->Enabled = false;
+			this->textBox11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->textBox11->Location = System::Drawing::Point(263, 243);
+			this->textBox11->Name = L"textBox11";
+			this->textBox11->ReadOnly = true;
+			this->textBox11->Size = System::Drawing::Size(99, 35);
+			this->textBox11->TabIndex = 39;
+			// 
+			// textBox10
+			// 
+			this->textBox10->Enabled = false;
+			this->textBox10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->textBox10->Location = System::Drawing::Point(148, 243);
+			this->textBox10->Name = L"textBox10";
+			this->textBox10->ReadOnly = true;
+			this->textBox10->Size = System::Drawing::Size(99, 35);
+			this->textBox10->TabIndex = 38;
+			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pictureBox2->Location = System::Drawing::Point(6, 214);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(713, 181);
+			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox2->TabIndex = 37;
+			this->pictureBox2->TabStop = false;
 			// 
 			// label22
 			// 
@@ -991,15 +1036,27 @@ namespace SterownikSP01 {
 			this->timer1->Interval = 2000;
 			this->timer1->Tick += gcnew System::EventHandler(this, &MyForm3::timer1_Tick);
 			// 
-			// pictureBox2
+			// label27
 			// 
-			this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox2->Location = System::Drawing::Point(6, 214);
-			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(713, 181);
-			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox2->TabIndex = 37;
-			this->pictureBox2->TabStop = false;
+			this->label27->AutoSize = true;
+			this->label27->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label27->Location = System::Drawing::Point(155, 302);
+			this->label27->Name = L"label27";
+			this->label27->Size = System::Drawing::Size(84, 20);
+			this->label27->TabIndex = 40;
+			this->label27->Text = L"Z aktualne";
+			// 
+			// label28
+			// 
+			this->label28->AutoSize = true;
+			this->label28->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label28->Location = System::Drawing::Point(278, 302);
+			this->label28->Name = L"label28";
+			this->label28->Size = System::Drawing::Size(84, 20);
+			this->label28->TabIndex = 41;
+			this->label28->Text = L"Z aktualne";
 			// 
 			// MyForm3
 			// 
@@ -1028,9 +1085,9 @@ namespace SterownikSP01 {
 			this->panel3->PerformLayout();
 			this->tabPage2->ResumeLayout(false);
 			this->tabPage2->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->panel4->ResumeLayout(false);
 			this->panel4->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -1076,8 +1133,8 @@ namespace SterownikSP01 {
 		ramka[1] = 0x10;
 		ramka[2] = 0x00;
 		ramka[3] = 0x01;
-		ramka[4] = Convert::ToInt32(this->numericUpDown2->Value);
-		ramka[5] = Convert::ToInt32(this->numericUpDown3->Value);
+		ramka[4] = Convert::ToInt16(this->numericUpDown2->Value);
+		ramka[5] = Convert::ToInt16(this->numericUpDown3->Value);
 		crc = ModbusCRC(ramka, rozmiar - 2);
 		ramka[rozmiar - 2] = Convert::ToInt32(crc);
 		crc >>= 8;
@@ -1085,7 +1142,7 @@ namespace SterownikSP01 {
 
 		for (int i = 0; i < 8; i++){
 			transmit[i] = Convert::ToByte(ramka[i]);
-			textBox3->AppendText(ramka[i].ToString("X2"));
+			textBox3->AppendText(transmit[i].ToString("X2"));
 		}
 		String^ name = this->serialPort1->PortName;
 		String^ message = this->textBox3->Text;
@@ -1094,18 +1151,20 @@ namespace SterownikSP01 {
 		else
 			this->textBox1->Text = "Port jest zamkniêty";
 	}
-	int kupa = 10;
+			int kupa = 10;
 	public: void wyslij2(void){
 		textBox2->Clear();
-		array<Byte>^ transmit2 = gcnew array< Byte >(600);
-		array<Byte>^ transmit3 = gcnew array< Byte >(600);
+		const int zlicz2 = (dataGridView1->RowCount) * 2 + 7;
+		array<Byte>^ transmit2 = gcnew array< Byte >(zlicz2);
+		array<Byte>^ transmit3 = gcnew array< Byte >(zlicz2);
 		int gowno = 3000;
 		unsigned int temp;
 		int n = 0;
 		int c = 0;
+
 		//	array<System::Byte>^ ramka2 = gcnew array<System::Byte>(260);
-		unsigned char ramka2[600];
-		unsigned char ramka3[600];
+		unsigned char ramka2[200];
+		unsigned char ramka3[200];
 		ramka2[0] = 0x01;
 		ramka2[1] = 0x10;
 		ramka2[2] = 0x00;
@@ -1120,7 +1179,7 @@ namespace SterownikSP01 {
 		for (int i = 0; i < dataGridView1->RowCount; i++){
 			m = Convert::ToString(dataGridView1->Rows[i]->Cells[1]->Value);
 			String^ correctString = m->Replace(",", "");
-			//temp *= 10;
+			//temp *= 10;re
 			//textBox2->AppendText(temp.ToString());
 			temp = Convert::ToInt32(correctString);
 			ramka2[5 + n] = temp;
@@ -1173,7 +1232,7 @@ namespace SterownikSP01 {
 		else
 			this->textBox1->Text = "Port jest zamkniety";
 	}
-	int zlicz = 0;
+			int zlicz = 0;
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 
 	}
@@ -1229,7 +1288,7 @@ namespace SterownikSP01 {
 		this->dataGridView1->Enabled = true;
 		wyslij(); //budowa ramki
 		String^ name = this->serialPort1->PortName;
-		String^ message = this->textBox3->Text;
+		String^ messwage = this->textBox3->Text;
 		if (this->serialPort1->IsOpen)
 			this->serialPort1->WriteLine(message);
 		else
@@ -1347,63 +1406,83 @@ namespace SterownikSP01 {
 
 	public: System::Void serialPort1_DataReceived(System::Object^  sender, System::IO::Ports::SerialDataReceivedEventArgs^  e) {
 
-		numbytes = serialPort1->BytesToRead;
-		this->timer1->Enabled = true;
-		this->timer1->Start();
-		encodedBytes = gcnew array<Byte>(16);
-		if (sender == this->serialPort1){
-			for (int ck = 0; ck < 16; ck++){
-				encodedBytes[ck] = serialPort1->ReadByte();
+		if (this->tabPage2){
+			numbytes = serialPort1->BytesToRead;
+			this->timer1->Enabled = true;
+			this->timer1->Start();
+			encodedBytes = gcnew array<Byte>(16);
+			if (sender == this->serialPort1){
+				for (int ck = 0; ck < 16; ck++){
+					encodedBytes[ck] = serialPort1->ReadByte();
+				}
+				this->BeginInvoke(gcnew EventHandler(this, &MyForm3::SetTextCallback), encodedBytes);  //callbeck dla odczytów w innym thread
 			}
-			this->BeginInvoke(gcnew EventHandler(this, &MyForm3::SetTextCallback), encodedBytes);  //callbeck dla odczytów w innym thread
+			this->serialPort1->DiscardInBuffer();
+			this->serialPort1->DiscardOutBuffer();
 		}
-		this->serialPort1->DiscardInBuffer();
-		this->serialPort1->DiscardOutBuffer();
 	}
 	private: System::Void SetTextCallback(System::Object^ sender, System::EventArgs^ e){
 		if (sender != this->serialPort1){
+			unsigned char ramka[20];
+			int rozmiar = 16;
 
-		//	if (numbytes==16){
-				textBox9->Clear();
-				for (ck = 0; ck < numbytes; ck++){
-					this->textBox9->Text += ((encodedBytes[ck].ToString("X2")));
+			for (int i = 0; i < 16; i++){
+				ramka[i] = Convert::ToChar(encodedBytes[i]);
+			}
+			crc = ModbusCRC(ramka, rozmiar - 2);
+			if (numbytes == 16){
+				if (ramka[0] == 0xfe){
+				if (ramka[rozmiar - 2] == Convert::ToChar(crc)){
+					crc >>= 8;
+					if (ramka[rozmiar - 1] == Convert::ToChar(crc)){
+						textBox9->Clear();
+						for (ck = 0; ck < numbytes; ck++){
+							this->textBox9->Text += ((encodedBytes[ck].ToString("X2")));
+						}
+
+						int numerPasa = 0;
+						int ZAktualne = 0;
+						int ZZadane = 0;
+						int YAktualne = 0;
+						int YZadane = 0;
+						int kontrolki = 0;
+						numerPasa = (256 * encodedBytes[2] + encodedBytes[3]);
+						ZAktualne = (256 * encodedBytes[4] + encodedBytes[5]);
+						ZZadane = (256 * encodedBytes[6] + encodedBytes[7]);
+						YAktualne = (256 * encodedBytes[8] + encodedBytes[9]);
+						YZadane = (256 * encodedBytes[10] + encodedBytes[11]);
+						kontrolki = (256 * encodedBytes[12] + encodedBytes[13]);
+						this->textBox4->Text = numerPasa.ToString();
+						this->textBox5->Text = (((ZAktualne / 10).ToString() + "." + (ZAktualne % 10).ToString("X2")));
+						this->textBox6->Text = (((ZZadane / 10).ToString() + "." + (ZZadane % 10).ToString("X2")));
+						this->textBox7->Text = (((YAktualne / 10).ToString() + "." + (YAktualne % 10).ToString("X2")));
+						this->textBox8->Text = (((YZadane / 10).ToString() + "." + (YZadane % 10).ToString("X2")));
+						if (kontrolki & 0x01) this->panel5->BackColor = Color::Green;
+						else if (!(kontrolki & 0x01))  this->panel5->BackColor = Color::Red;
+						if (kontrolki & 0x02) this->panel6->BackColor = Color::Green;
+						else if (!(kontrolki & 0x02))  this->panel6->BackColor = Color::Red;
+						if (kontrolki & 0x04) this->panel7->BackColor = Color::Green;
+						else if (!(kontrolki & 0x04))  this->panel7->BackColor = Color::Red;
+						if (kontrolki & 0x08) this->panel8->BackColor = Color::Green;
+						else if (!(kontrolki & 0x08))  this->panel8->BackColor = Color::Red;
+						if (kontrolki & 0x10) this->panel9->BackColor = Color::Green;
+						else if (!(kontrolki & 0x10))  this->panel9->BackColor = Color::Red;
+						if (kontrolki & 0x20) this->panel10->BackColor = Color::Green;
+						else if (!(kontrolki & 0x20))  this->panel10->BackColor = Color::Red;
+						if (kontrolki & 0x40) this->panel11->BackColor = Color::Green;
+						else if (!(kontrolki & 0x40))  this->panel11->BackColor = Color::Red;
+						if (kontrolki & 0x80) this->panel12->BackColor = Color::Green;
+						else if (!(kontrolki & 0x80))  this->panel12->BackColor = Color::Red;
+						if (kontrolki & 0x100) this->panel13->BackColor = Color::Green;
+						else if (!(kontrolki & 0x100))  this->panel13->BackColor = Color::Red;
+						if (kontrolki & 0x200) this->panel14->BackColor = Color::Green;
+						else if (!(kontrolki & 0x200))  this->panel14->BackColor = Color::Red;
+						if (kontrolki & 0x400) this->panel15->BackColor = Color::Green;
+						else if (!(kontrolki & 0x400))  this->panel15->BackColor = Color::Red;
+					}
 				}
-
-				int numerPasa, ZAktualne, ZZadane, YAktualne, YZadane, kontrolki;
-					numerPasa = (256 * encodedBytes[2] + encodedBytes[3]);
-					ZAktualne = (256 * encodedBytes[4] + encodedBytes[5]);
-					ZZadane = (256 * encodedBytes[6] + encodedBytes[7]);
-					YAktualne = (256 * encodedBytes[8] + encodedBytes[9]);
-					YZadane = (256 * encodedBytes[10] + encodedBytes[11]);
-					kontrolki = (256 * encodedBytes[12] + encodedBytes[13]);
-					this->textBox4->Text = numerPasa.ToString();
-					this->textBox5->Text = (((ZAktualne / 10).ToString() + "." +( ZAktualne%10 ).ToString("X2")));
-					this->textBox6->Text = (((ZZadane / 10).ToString() + "." +( ZZadane%10 ).ToString("X2")));
-					this->textBox7->Text = (((YAktualne / 10).ToString() + "." +( YAktualne%10 ).ToString("X2")));
-					this->textBox8->Text = (((YZadane / 10).ToString() + "." +( YZadane%10 ).ToString("X2")));
-					if (kontrolki & 0x01) this->panel5->BackColor = Color::Green;
-					else if (!(kontrolki & 0x01))  this->panel5->BackColor = Color::Red;
-					if (kontrolki & 0x02) this->panel6->BackColor = Color::Green;
-					else if (!(kontrolki & 0x02))  this->panel6->BackColor = Color::Red;
-					if (kontrolki & 0x04) this->panel7->BackColor = Color::Green;
-					else if (!(kontrolki & 0x04))  this->panel7->BackColor = Color::Red;
-					if (kontrolki & 0x08) this->panel8->BackColor = Color::Green;
-					else if (!(kontrolki & 0x08))  this->panel8->BackColor = Color::Red;
-					if (kontrolki & 0x10) this->panel9->BackColor = Color::Green;
-					else if (!(kontrolki & 0x10))  this->panel9->BackColor = Color::Red;
-					if (kontrolki & 0x20) this->panel10->BackColor = Color::Green;
-					else if (!(kontrolki & 0x20))  this->panel10->BackColor = Color::Red;
-					if (kontrolki & 0x40) this->panel11->BackColor = Color::Green;
-					else if (!(kontrolki & 0x40))  this->panel11->BackColor = Color::Red;
-					if (kontrolki & 0x80) this->panel12->BackColor = Color::Green;
-					else if (!(kontrolki & 0x80))  this->panel12->BackColor = Color::Red;
-					if (kontrolki & 0x100) this->panel13 ->BackColor = Color::Green;
-					else if (!(kontrolki & 0x100))  this->panel13->BackColor = Color::Red;
-					if (kontrolki & 0x200) this->panel14->BackColor = Color::Green;
-					else if (!(kontrolki & 0x200))  this->panel14->BackColor = Color::Red;
-					if (kontrolki & 0x400) this->panel15->BackColor = Color::Green;
-					else if (!(kontrolki & 0x400))  this->panel15->BackColor = Color::Red;
-			//	}
+			}
+		}
 		}
 	}
 
@@ -1415,7 +1494,7 @@ namespace SterownikSP01 {
 	}
 	private: System::Void tabPage2_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
-};
+	};
 }
 
 

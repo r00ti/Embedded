@@ -1097,7 +1097,7 @@ namespace SterownikSP01 {
 		else
 			this->textBox1->Text = "Port jest zamkniêty";
 	}
-	int kupa = 10;
+			int kupa = 10;
 	public: void wyslij2(void){
 		textBox2->Clear();
 		array<Byte>^ transmit2 = gcnew array< Byte >(600);
@@ -1176,7 +1176,7 @@ namespace SterownikSP01 {
 		else
 			this->textBox1->Text = "Port jest zamkniety";
 	}
-	int zlicz = 0;
+			int zlicz = 0;
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 
 	}
@@ -1360,9 +1360,10 @@ namespace SterownikSP01 {
 			}
 			this->Invoke(gcnew EventHandler(this, &MyForm3::SetTextCallback), encodedBytes);  //callbeck dla odczytów w innym thread
 		}
-	/*	this->serialPort1->DiscardInBuffer();
-		this->serialPort1->DiscardOutBuffer();*/
-
+		else{
+			this->serialPort1->DiscardInBuffer();
+			this->serialPort1->DiscardOutBuffer();
+		}
 	}
 	private: System::Void SetTextCallback(System::Object^ sender, System::EventArgs^ e){
 		if (sender != this->serialPort1){
@@ -1374,7 +1375,6 @@ namespace SterownikSP01 {
 
 			for (int i = 0; i < 16; i++){
 				ramka23[i] = Convert::ToChar(encodedBytes[i]);
-
 			}
 
 			crc = ModbusCRC(ramka23, 14);
@@ -1417,9 +1417,14 @@ namespace SterownikSP01 {
 						if (kontrolki & 0x400) this->panel15->BackColor = Color::Green;
 						else if (!(kontrolki & 0x400))  this->panel15->BackColor = Color::Red;
 					}
+					this->serialPort1->DiscardInBuffer();
+					this->serialPort1->DiscardOutBuffer();
 				}
-			
+				this->serialPort1->DiscardInBuffer();
+				this->serialPort1->DiscardOutBuffer();
 			}
+			this->serialPort1->DiscardInBuffer();
+			this->serialPort1->DiscardOutBuffer();
 		}
 		this->serialPort1->DiscardInBuffer();
 		this->serialPort1->DiscardOutBuffer();
@@ -1433,7 +1438,7 @@ namespace SterownikSP01 {
 	}
 	private: System::Void tabPage2_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
-};
+	};
 }
 
 

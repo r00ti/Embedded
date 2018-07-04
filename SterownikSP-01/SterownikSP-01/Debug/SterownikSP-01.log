@@ -1,6 +1,0 @@
-﻿  MyForm.cpp
-MyForm.cpp(14): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
-  MyForm1.cpp
-  MyForm3.cpp
-  Generating Code...
-  SterownikSP-01.vcxproj -> C:\Users\adi\Documents\Visual Studio 2013\Projects\SterownikSP-01\Debug\SterownikSP-01.exe

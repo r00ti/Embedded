@@ -1,6 +1,5 @@
 #pragma once
 
-#include "MyForm1.h"
 #include "MyForm2.h"
 #include "MyForm3.h"
 #include "MyForm4.h"
@@ -31,16 +30,16 @@ namespace SterownikSP01 {
 	private: System::Windows::Forms::Button^  button6;
 	private: System::Windows::Forms::Timer^  timer1;
 	private: System::Windows::Forms::Button^  button7;
-	public :
-	
-		
+	public:
+
+
 		MyForm(void)
 		{
 			InitializeComponent();
 			DateTime now = DateTime::Now;
 			DateTime date = now.Date;
 			TimeSpan time = now.TimeOfDay;
-	
+
 		}
 
 	protected:
@@ -49,7 +48,7 @@ namespace SterownikSP01 {
 		/// </summary>
 		~MyForm()
 		{
-		
+
 			if (components)
 			{
 				delete components;
@@ -63,7 +62,6 @@ namespace SterownikSP01 {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -150,76 +148,59 @@ namespace SterownikSP01 {
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
+		MyForm2 ^okno = gcnew MyForm2();
+		this->Hide();
+		okno->ShowDialog();
+		this->Show();
 
-				 MyForm1 ^okno = gcnew MyForm1(portname);
-				 this->Hide();
-				 okno->ShowDialog();
-				 this->Show();
 	}
-	 
-	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (!polaczony)
+			Application::Exit();
+
+		MessageBox::Show("Roz³¹cz po³¹czenie z SP-01", "Po³¹czenie",
+			MessageBoxButtons::OK, MessageBoxIcon::Warning);
 	}
-private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
-			 MyForm2 ^okno = gcnew MyForm2();
-			 this->Hide();
-			 okno->ShowDialog();
-			 this->Show();
+	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+		MyForm3 ^okno = gcnew MyForm3();
+		this->Hide();
+		okno->ShowDialog();
+		this->Show();
+	}
+			 // wyliczenie CRC dla  protokolu MODBUS
+	private: unsigned short ModbusCRC2(unsigned char * buf, int size){
+		unsigned short crc = 0xffff;
+		int i;
+		while (size--){
+			crc ^= *buf;
+			buf++;
+			for (i = 0; i < 8; i++){
+				if (crc & 1){
+					crc >>= 1;
+					crc ^= 0xA001;
+				}
+				else{
+					crc >>= 1;
+				}
+			}
+		}
+		return crc;
+	}
+	private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
+		MyForm4 ^okno = gcnew MyForm4();
+		this->Hide();
+		okno->ShowDialog();
+		this->Show();
+	}
+	private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
 
-}
-private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
-			 if (!polaczony)
-				 Application::Exit();
-			 
-			 MessageBox::Show("Roz³¹cz po³¹czenie z SP-01", "Po³¹czenie",
-				 MessageBoxButtons::OK, MessageBoxIcon::Warning);
-}
-private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-	MyForm3 ^okno = gcnew MyForm3();
-	this->Hide();
-	okno->ShowDialog();
-	this->Show();
-}
-// wyliczenie CRC dla  protokolu MODBUS
-private: unsigned short ModbusCRC2(unsigned char * buf, int size){
-			unsigned short crc = 0xffff;
-			int i;
-			 while (size--){
-						  crc ^= *buf;
-						  buf++;
-						  for (i = 0; i<8; i++){
-							  if (crc & 1){
-								  crc >>= 1;
-								  crc ^= 0xA001;
-							  }
-							  else{
-								  crc >>= 1;
-							  }
-						  }
-					  }
-					  return crc;
-		 }
-private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
-			 MyForm4 ^okno = gcnew MyForm4();
-			 this->Hide();
-			 okno->ShowDialog();
-			 this->Show();
-}
-private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
-			
-			 DateTime now = DateTime::Now;
-			 DateTime date = now.Date;
-			 TimeSpan time = now.TimeOfDay;
+		DateTime now = DateTime::Now;
+		DateTime date = now.Date;
+		TimeSpan time = now.TimeOfDay;
+	}
+	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
 
-
-}
-private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
-			 MyForm1 ^okno = gcnew MyForm1();
-			 this->Hide();
-			 okno->ShowDialog();
-			 this->Show();
-}
-};
+	};
 }

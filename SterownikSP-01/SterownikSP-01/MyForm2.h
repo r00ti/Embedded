@@ -68,7 +68,6 @@ namespace SterownikSP01 {
 			this->label1->Size = System::Drawing::Size(205, 13);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Autor oprogramowania : Adrian Rutkowski";
-			this->label1->Click += gcnew System::EventHandler(this, &MyForm2::label1_Click);
 			// 
 			// label2
 			// 
@@ -78,7 +77,6 @@ namespace SterownikSP01 {
 			this->label2->Size = System::Drawing::Size(174, 13);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Kontakt : rutkowski.adr@gmail.com";
-			this->label2->Click += gcnew System::EventHandler(this, &MyForm2::label2_Click);
 			// 
 			// label3
 			// 
@@ -119,9 +117,5 @@ namespace SterownikSP01 {
 
 		}
 #pragma endregion
-	private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) {
-	}
-	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
-	}
 	};
 }

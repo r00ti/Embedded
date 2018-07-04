@@ -1,5 +1,4 @@
   SterownikSP01.MyForm.resources - Embedded, ContainedInManifestFile, 
-  SterownikSP01.MyForm1.resources - Embedded, ContainedInManifestFile, 
   SterownikSP01.MyForm2.resources - Embedded, ContainedInManifestFile, 
   SterownikSP01.MyForm3.resources - Embedded, ContainedInManifestFile, 
   SterownikSP01.MyForm4.resources - Embedded, ContainedInManifestFile, 
@@ -18,13 +17,6 @@ Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=
 	hash=None, flags=None
 Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
-Class SterownikSP01.MyForm1: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(System.Object[]): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Fields:
-    System.String portnames1 : Public
-    System.String bouds : Public
 Class SterownikSP01.MyForm2: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -35,18 +27,26 @@ Class SterownikSP01.MyForm3: AutoLayout, AnsiClass, Class, Public, BeforeFieldIn
     System.String message : Public
     System.Object[] portname : Public
     Int32 numbytes : Public
+    Int32 configureOk : Public
+    Int32 szablonOk : Public
+    Int32 licznikDanych : Public
     Int32 ck : Public
     Int32 flaga : Public
     Boolean ready_to_read : Public
     Byte[] encodedBytes : Public
+    Int32[] tabYMSB : Public
+    Int32[] tabYLSB : Public
+    Int32[] tabZMSB : Public
+    Int32[] tabZLSB : Public
+    Int32[] tabZ : Public
+    Int32[] tabY : Public
+    System.String bouds2 : Public
+    System.String data1 : Public
     Byte hams : Public
     System.String marian : Public
     System.String portnames2 : Public
-    System.String bouds2 : Public
-    System.String data1 : Public
-    Byte receivs : Public
     System.IO.Ports.SerialPort serialPort1 : Public
-    Int32 kupa : Public
+    Byte receivs : Public
     Int32 zlicz : Public
   Methods:
     wyslij(): PrivateScope, Public, HideBySig

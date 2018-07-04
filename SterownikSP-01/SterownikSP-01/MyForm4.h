@@ -14,7 +14,7 @@ namespace SterownikSP01 {
 	using namespace System::Text;
 	using namespace System::Data::SqlClient;
 	using namespace System::Data::OleDb;
-	
+
 
 	/// <summary>
 	/// Summary for MyForm4
@@ -42,50 +42,17 @@ namespace SterownikSP01 {
 			}
 		}
 	private: System::Windows::Forms::Label^  label1;
-	protected:
-
-
-
-
-
-
-
-
-
-
-
-
-
 	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
-
-
-
-
-
-
-
-
 	private: System::Windows::Forms::NumericUpDown^  numericUpDown4;
 	private: System::Windows::Forms::Button^  button3;
-
-
-
-
 	private: System::Windows::Forms::DataGridView^  dataGridView1;
-
-
 	private: System::Windows::Forms::Button^  button4;
-
-
 	private: System::Windows::Forms::Label^  label4;
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::TextBox^  textBox1;
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::Label^  label5;
-
-
-
 	private: System::Windows::Forms::NumericUpDown^  numericUpDown1;
 	private: System::Windows::Forms::Label^  label6;
 	private: System::Windows::Forms::Label^  label7;
@@ -93,25 +60,6 @@ namespace SterownikSP01 {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
 	private: System::Windows::Forms::Button^  button1;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -386,191 +334,152 @@ namespace SterownikSP01 {
 #pragma endregion
 	private: System::Void MyForm4_Load(System::Object^  sender, System::EventArgs^  e) {
 	}
-private: System::Void textBox1_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+	private: System::Void textBox1_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
 
-			 if ((e->KeyChar <0) || (e->KeyChar >255)){
-				 MessageBox::Show("Zakres od 0 do 255mm", "Uwaga",
-						 MessageBoxButtons::OK, MessageBoxIcon::Error);
-				 e->KeyChar = (char)0;
-			 }
-}
+		if ((e->KeyChar < 0) || (e->KeyChar >255)){
+			MessageBox::Show("Zakres od 0 do 255mm", "Uwaga",
+				MessageBoxButtons::OK, MessageBoxIcon::Error);
+			e->KeyChar = (char)0;
+		}
+	}
+			 int b, c;
+			 int size = 255, i = 0;
+			 int* myarr = new int[size];
 
-		 int b,c;
-		 int size = 255, i = 0;
-		 int* myarr = new int[size];
+	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+		numericUpDown4->Maximum = 255;
+		numericUpDown4->Minimum = 0;
+		numericUpDown4->Value = 150;
+		numericUpDown4->Visible = true;
+		button3->Visible = true;
+	}
+			 int error = 0;
+			 int zlicz = 0;
+			 int zlicz1 = 0;
+	private: System::Void button3_Click_1(System::Object^  sender, System::EventArgs^  e) {
 
-private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-			 numericUpDown4->Maximum = 255;
-			 
-			 numericUpDown4->Minimum = 0;
-			 numericUpDown4->Value = 150;
-			 numericUpDown4->Visible = true;
-			 button3->Visible = true;
+		zlicz++;
+		if (zlicz <= 255){
+			int n = dataGridView1->Rows->Add();
+			dataGridView1->Rows[n]->Cells[0]->Value = zlicz;
+			dataGridView1->Rows[n]->Cells[2]->Value = numericUpDown1->Value.ToString("0.0##");
+			dataGridView1->Rows[n]->Cells[1]->Value = numericUpDown4->Value.ToString("0.0##"); // do 1 miejsca po przecinku
+		}
+		else  MessageBox::Show("Maksymalna iloœæ to 255 ", "Parametry",
+			MessageBoxButtons::OK, MessageBoxIcon::Warning);
 
-}
-
-		 int error = 0;
-		 int zlicz = 0;
-		 int zlicz1 = 0;
-private: System::Void button3_Click_1(System::Object^  sender, System::EventArgs^  e) {
-			
-				 zlicz++;
-				 if (zlicz <= 255){
-					 int n = dataGridView1->Rows->Add();
-					 dataGridView1->Rows[n]->Cells[0]->Value = zlicz;
-					 dataGridView1->Rows[n]->Cells[2]->Value = numericUpDown1->Value.ToString("0.0##");
-					 dataGridView1->Rows[n]->Cells[1]->Value = numericUpDown4->Value.ToString("0.0##"); // do 1 miejsca po przecinku
-				 }
-				 else  MessageBox::Show("Maksymalna iloœæ to 255 ", "Parametry",
-					 MessageBoxButtons::OK, MessageBoxIcon::Warning);
-				 
 	}
 
-private: System::Void dataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
-}
+	private: System::Void dataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+	}
 
-		 bool ready;
-private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
-
-
-			 error = 0;
-			for (int m = 0; m < (dataGridView1->RowCount); m++){
-				if ((Convert::ToDouble(dataGridView1->Rows[m]->Cells[1]->Value) >= 300,0) && (Convert::ToDouble(dataGridView1->Rows[m]->Cells[0]->Value)>= 1)){
-					 dataGridView1->Rows[m]->Cells[1]->Style->BackColor = Color::Red;
-					 error++;
-				}
-				else { dataGridView1->Rows[m]->Cells[1]->Style->BackColor = Color::Green; }
-				if ((Convert::ToDouble(dataGridView1->Rows[m]->Cells[2]->Value) >= 1000,0) && (Convert::ToDouble(dataGridView1->Rows[m]->Cells[0]->Value) >= 1)){
-						dataGridView1->Rows[m]->Cells[2]->Style->BackColor = Color::Red;
-						error++;
-					}
-					else { dataGridView1->Rows[m]->Cells[2]->Style->BackColor = Color::Green; }
-
+			 bool ready;
+	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
+		error = 0;
+		for (int m = 0; m < (dataGridView1->RowCount); m++){
+			if ((Convert::ToDouble(dataGridView1->Rows[m]->Cells[1]->Value) >= 300, 0) && (Convert::ToDouble(dataGridView1->Rows[m]->Cells[0]->Value) >= 1)){
+				dataGridView1->Rows[m]->Cells[1]->Style->BackColor = Color::Red;
+				error++;
 			}
-			if (error != 0){
-				 MessageBox::Show("Maksymalna wartoœæ to 300 [mm]", "Parametry",
-								MessageBoxButtons::OK, MessageBoxIcon::Warning);
-				 ready = false;
-			 }
-			else if  (textBox1->Text == "")  {
-				MessageBox::Show("Nadaj nazwê dla tworzonego szablonu", "Zapis",
-					MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			else { dataGridView1->Rows[m]->Cells[1]->Style->BackColor = Color::Green; }
+			if ((Convert::ToDouble(dataGridView1->Rows[m]->Cells[2]->Value) >= 1000, 0) && (Convert::ToDouble(dataGridView1->Rows[m]->Cells[0]->Value) >= 1)){
+				dataGridView1->Rows[m]->Cells[2]->Style->BackColor = Color::Red;
+				error++;
 			}
-			 else{
+			else { dataGridView1->Rows[m]->Cells[2]->Style->BackColor = Color::Green; }
+
+		}
+		if (error != 0){
+			MessageBox::Show("Maksymalna wartoœæ to 300 [mm]", "Parametry",
+				MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			ready = false;
+		}
+		else if (textBox1->Text == "")  {
+			MessageBox::Show("Nadaj nazwê dla tworzonego szablonu", "Zapis",
+				MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
+		else{
 			//-----------ZAPIS DO PLIKU TXT------------//
-				 ready = true;
-				 dataGridView1->Enabled = false;
-		
-				 saveFileDialog1->Filter = "Pliki programu Stone (*.txt)|*.txt|Wszystkie pliki (*.*)|*.*";
-				 int col = 0, row = 0;
-				 String^ linia;
-				 col = Convert::ToInt32(dataGridView1->ColumnCount);
-				 row = Convert::ToInt32(dataGridView1->RowCount);
-				
-					 if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-						 StreamWriter^ plik = gcnew StreamWriter(saveFileDialog1->FileName, 0, System::Text::Encoding::Default);
-						 linia += textBox1->Text;
-						 linia += ";";
-						 for (row = 0; row < (dataGridView1->RowCount); row++) {
+			ready = true;
+			dataGridView1->Enabled = false;
 
-							 linia += Convert::ToString(dataGridView1->Rows[row]->Cells[1]->Value);
+			saveFileDialog1->Filter = "Pliki programu Stone (*.txt)|*.txt|Wszystkie pliki (*.*)|*.*";
+			int col = 0, row = 0;
+			String^ linia;
+			col = Convert::ToInt32(dataGridView1->ColumnCount);
+			row = Convert::ToInt32(dataGridView1->RowCount);
 
-							 linia += ";";
-							 linia += Convert::ToString(dataGridView1->Rows[row]->Cells[2]->Value);
-							 linia += ";";
-						 }
+			if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				StreamWriter^ plik = gcnew StreamWriter(saveFileDialog1->FileName, 0, System::Text::Encoding::Default);
+				linia += textBox1->Text;
+				linia += ";";
+				for (row = 0; row < (dataGridView1->RowCount); row++) {
 
-						 plik->WriteLine(linia);
-						 plik->Close();
-					 }
-				 }
-			
-				
-				
+					linia += Convert::ToString(dataGridView1->Rows[row]->Cells[1]->Value);
 
-}
-			 
+					linia += ";";
+					linia += Convert::ToString(dataGridView1->Rows[row]->Cells[2]->Value);
+					linia += ";";
+				}
 
+				plik->WriteLine(linia);
+				plik->Close();
+			}
+		}
+	}
 
+	private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
 
+		dataGridView1->Enabled = true;
+		dataGridView1->Rows->Clear();
+		zlicz = 0;
+		Stream^ myStream;
+		OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog;
+		String ^ktory;
+		openFileDialog1->Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+		openFileDialog1->FilterIndex = 2;
+		openFileDialog1->RestoreDirectory = true;
+		this->button3->Enabled = true;
+		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK){
 
+			if ((myStream = openFileDialog1->OpenFile()) != nullptr){
+				String^ pfad = openFileDialog1->FileName; //Datei zum einlesen 
+				StreamReader^ sr = gcnew StreamReader(pfad); //lese Daten
+				int n = 1;
+				while (sr->Peek() >= 0) {
+					String ^s = sr->ReadLine();
+					array<String^>^words = s->Split(';');
+					for (int i = 1; i < words->Length - 1; i += 2){
+						ktory = words[0];
+						if (i != 0) zlicz++;
+						dataGridView1->Rows->Add(zlicz, words[i], words[i + 1]);
+					}
+				}
+				sr->Close();
+			}
+		}
+	}
+	private: System::Void saveFileDialog1_FileOk(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+		MessageBox::Show("Szablon zostal zapisany", "Zapis",
+			MessageBoxButtons::OK, MessageBoxIcon::Information);
+	}
+	private: System::Void button2_Click_1(System::Object^  sender, System::EventArgs^  e) {
 
-private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		OpenFileDialog ^openFileDialog1 = gcnew OpenFileDialog();  //create openfileDialog Object
+		openFileDialog1->Filter = "XML Files (*.xml; *.xls; *.xlsx; *.xlsm; *.xlsb) |*.xml; *.xls; *.xlsx; *.xlsm; *.xlsb";//open file format define Excel Files(.xls)|*.xls| Excel Files(.xlsx)|*.xlsx| 
+		openFileDialog1->FilterIndex = 3;
+		openFileDialog1->Multiselect = false;        //not allow multiline selection at the file selection level
+		openFileDialog1->Title = "Open Text File-R13";   //define the name of openfileDialog
 
-			
-}
-private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
+		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK){
+			String ^ pathconn = "Provider = Microsoft.jet.OLEDB.4.0; Data source=" + openFileDialog1->FileName + ";Extended Properties=\"Excel 8.0;HDR= yes;\";";
+			OleDbConnection ^conn = gcnew OleDbConnection(pathconn);
+			OleDbDataAdapter ^MyDataAdapter = gcnew OleDbDataAdapter("Select * from [" + "Arkusz1" + "$]", conn);
+			DataTable^ dt = gcnew DataTable();
 
-			 dataGridView1->Enabled = true;
-			 dataGridView1->Rows->Clear();
-			 zlicz = 0;
-			 Stream^ myStream;
-			 OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog;
-			 String ^ktory;
-			 openFileDialog1->Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-			 openFileDialog1->FilterIndex = 2;
-			 openFileDialog1->RestoreDirectory = true;
-			 this->button3->Enabled = true;
-			 if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK){
-
-				 if ((myStream = openFileDialog1->OpenFile()) != nullptr){
-					 String^ pfad = openFileDialog1->FileName; //Datei zum einlesen 
-					 StreamReader^ sr = gcnew StreamReader(pfad); //lese Daten
-							 int n = 1;
-					 while (sr->Peek() >= 0) {
-						 String ^s = sr->ReadLine();
-						 array<String^>^words = s->Split(';');
-						 for (int i = 1; i < words->Length - 1; i += 2){
-							 ktory = words[0];
-							 if (i != 0) zlicz++;
-
-							 dataGridView1->Rows->Add(zlicz, words[i], words[i + 1]);
-
-
-						 }
-				
-						
-
-					 }
-					 sr->Close();
-				 }
-
-			 }
-}
-private: System::Void saveFileDialog1_FileOk(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
-			 MessageBox::Show("Szablon zostal zapisany", "Zapis",
-				 MessageBoxButtons::OK, MessageBoxIcon::Information);
-}
-private: System::Void button2_Click_1(System::Object^  sender, System::EventArgs^  e) {
-
-		//	 try
-			// {
-				 OpenFileDialog ^openFileDialog1 = gcnew OpenFileDialog();  //create openfileDialog Object
-				 openFileDialog1->Filter = "XML Files (*.xml; *.xls; *.xlsx; *.xlsm; *.xlsb) |*.xml; *.xls; *.xlsx; *.xlsm; *.xlsb";//open file format define Excel Files(.xls)|*.xls| Excel Files(.xlsx)|*.xlsx| 
-				 openFileDialog1->FilterIndex = 3;
-
-				 openFileDialog1->Multiselect = false;        //not allow multiline selection at the file selection level
-				 openFileDialog1->Title = "Open Text File-R13";   //define the name of openfileDialog
-//				 openFileDialog1->InitialDirectory = @"Desktop"; //define the initial directory
-
-
-				 if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK){
-					String ^ pathconn = "Provider = Microsoft.jet.OLEDB.4.0; Data source=" + openFileDialog1->FileName + ";Extended Properties=\"Excel 8.0;HDR= yes;\";";
-					 OleDbConnection ^conn =gcnew OleDbConnection(pathconn);
-					 OleDbDataAdapter ^MyDataAdapter = gcnew OleDbDataAdapter("Select * from [" + "Arkusz1" + "$]", conn);
-					 DataTable^ dt = gcnew DataTable();
-					 
-					 MyDataAdapter->Fill(dt);
-					 dataGridView1->DataSource = dt;
-				 }
-
-			// }
-			// catch (Exception^)
-		//	 {
-		//		 MessageBox::Show("Error!");
-		//	 }
-				 }
-
-
-};
+			MyDataAdapter->Fill(dt);
+			dataGridView1->DataSource = dt;
+		}
+	}
+	};
 }

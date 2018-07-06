@@ -73,9 +73,9 @@ namespace SterownikSP01 {
 	private: System::Windows::Forms::Label^  label10;
 	private: System::Windows::Forms::ComboBox^  comboBox1;
 	private: System::Windows::Forms::Button^  button4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+
+
+
 	private: System::Windows::Forms::TabPage^  tabPage2;
 	private: System::Windows::Forms::Panel^  panel4;
 	private: System::Windows::Forms::TextBox^  textBox8;
@@ -123,6 +123,9 @@ namespace SterownikSP01 {
 	private: System::Windows::Forms::ToolStripLabel^  toolStripLabel1;
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripSeparator2;
 	private: System::Windows::Forms::ToolStripLabel^  toolStripLabel2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	public:
 		Byte receivs;
 
@@ -181,8 +184,8 @@ namespace SterownikSP01 {
 				 this->label9 = (gcnew System::Windows::Forms::Label());
 				 this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 				 this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-				 this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 				 this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+				 this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 				 this->button2 = (gcnew System::Windows::Forms::Button());
 				 this->button3 = (gcnew System::Windows::Forms::Button());
 				 this->panel1 = (gcnew System::Windows::Forms::Panel());
@@ -389,7 +392,7 @@ namespace SterownikSP01 {
 				 this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 				 this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
 					 this->Column1,
-						 this->Column2, this->Column3
+						 this->Column3, this->Column2
 				 });
 				 dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
 				 dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Window;
@@ -420,14 +423,6 @@ namespace SterownikSP01 {
 				 this->Column1->Resizable = System::Windows::Forms::DataGridViewTriState::False;
 				 this->Column1->Width = 30;
 				 // 
-				 // Column2
-				 // 
-				 this->Column2->HeaderText = L"Axis Z [mm] ";
-				 this->Column2->Name = L"Column2";
-				 this->Column2->ReadOnly = true;
-				 this->Column2->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-				 this->Column2->Width = 90;
-				 // 
 				 // Column3
 				 // 
 				 this->Column3->HeaderText = L"Axis Y [mm]";
@@ -436,8 +431,17 @@ namespace SterownikSP01 {
 				 this->Column3->Resizable = System::Windows::Forms::DataGridViewTriState::False;
 				 this->Column3->Width = 90;
 				 // 
+				 // Column2
+				 // 
+				 this->Column2->HeaderText = L"Axis Z [mm] ";
+				 this->Column2->Name = L"Column2";
+				 this->Column2->ReadOnly = true;
+				 this->Column2->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+				 this->Column2->Width = 90;
+				 // 
 				 // button2
 				 // 
+				 this->button2->Enabled = false;
 				 this->button2->Location = System::Drawing::Point(32, 202);
 				 this->button2->Name = L"button2";
 				 this->button2->Size = System::Drawing::Size(155, 54);
@@ -1180,6 +1184,39 @@ namespace SterownikSP01 {
 		else
 			this->textBox1->Text = "Port jest zamkniêty";
 	}
+			//wysy³anie potwierdzenia == 1 konfiguracji -----------------------------------------------------
+
+	public: void wyslijPotwierdzenieKonfiguracji(void){
+		textBox3->Clear();
+		unsigned char ramka[8];
+		array<Byte>^ transmit = gcnew array< Byte >(8);
+		rozmiar = 8;
+		ramka[0] = 0x01;
+		ramka[1] = 0x06;
+		ramka[2] = 0x00;
+		ramka[3] = 0x01;
+		ramka[4] = 0x01;
+		ramka[5] = 0x01;
+
+		crc = ModbusCRC(ramka, rozmiar - 2);
+		ramka[rozmiar - 2] = Convert::ToInt32(crc);
+		crc >>= 8;
+		ramka[rozmiar - 1] = Convert::ToInt32(crc);
+
+		for (int i = 0; i < rozmiar; i++){
+			transmit[i] = Convert::ToByte(ramka[i]);
+			textBox3->AppendText(ramka[i].ToString("X2"));
+		}
+		String^ name = this->serialPort1->PortName;
+		String^ message = this->textBox3->Text;
+		if (this->serialPort1->IsOpen){
+			this->serialPort1->Write(transmit, 0, rozmiar);
+		}
+		else
+			this->textBox1->Text = "Port jest zamkniêty";
+	}
+
+
 			//wysy³anie szablonu z potwierdzeniem------------------------------------------------------
 	public: void wyslij2(void){
 		textBox2->Clear();
@@ -1214,6 +1251,36 @@ namespace SterownikSP01 {
 		}
 		else
 			this->textBox1->Text = "Port jest zamkniety";
+	}
+			//wysy³anie potwierdzenia == 1 szablonu -----------------------------------------------------
+	public: void wyslijPotwierdzenieSzablonu(void){
+		textBox3->Clear();
+		unsigned char ramka[8];
+		array<Byte>^ transmit = gcnew array< Byte >(8);
+		rozmiar = 8;
+		ramka[0] = 0x01;
+		ramka[1] = 0x06;
+		ramka[2] = 0x00;
+		ramka[3] = 0x02;
+		ramka[4] = 0x01;
+		ramka[5] = 0x01;
+
+		crc = ModbusCRC(ramka, rozmiar - 2);
+		ramka[rozmiar - 2] = Convert::ToInt32(crc);
+		crc >>= 8;
+		ramka[rozmiar - 1] = Convert::ToInt32(crc);
+
+		for (int i = 0; i < rozmiar; i++){
+			transmit[i] = Convert::ToByte(ramka[i]);
+			textBox3->AppendText(ramka[i].ToString("X2"));
+		}
+		String^ name = this->serialPort1->PortName;
+		String^ message = this->textBox3->Text;
+		if (this->serialPort1->IsOpen){
+			this->serialPort1->Write(transmit, 0, rozmiar);
+		}
+		else
+			this->textBox1->Text = "Port jest zamkniêty";
 	}
 			int zlicz = 0;
 
@@ -1339,7 +1406,7 @@ namespace SterownikSP01 {
 					this->comboBox2->Enabled = false;
 					this->numericUpDown1->Enabled = false;
 					this->button6->Enabled = false;
-					this->button1->Enabled = true;
+					this->button2->Enabled = true;
 					this->button2->Enabled = true;
 					this->button4->Enabled = false;
 					this->toolStripLabel2->Text = "";
@@ -1360,6 +1427,7 @@ namespace SterownikSP01 {
 		this->button1->Enabled = true;
 		this->comboBox1->Enabled = true;
 		this->comboBox2->Enabled = true;
+		this->button2->Enabled = false;
 		this->button4->Enabled = true;
 		this->numericUpDown1->Enabled = true;
 		this->button1->Enabled = false;
@@ -1423,6 +1491,7 @@ namespace SterownikSP01 {
 									toolStripLabel1->Text = "Ramka konfiguracyjna wys³ana poprawnie !";				//potwierdzenie ramki configuracyjnej
 									toolStripLabel2->Text = "Wyœlij szablon !";
 									toolStripProgressBar1->Value = 100;
+									wyslijPotwierdzenieKonfiguracji();
 									this->button3->Enabled = true;
 								}
 							}
@@ -1446,6 +1515,9 @@ namespace SterownikSP01 {
 									}
 								}
 							}
+						}
+						else{
+							wyslijPotwierdzenieSzablonu();
 						}
 					}
 					else{
@@ -1506,6 +1578,7 @@ namespace SterownikSP01 {
 	private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
 		wyslij(); //budowa ramki
 	}
+
 	};
 }
 

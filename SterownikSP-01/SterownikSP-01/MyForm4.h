@@ -56,10 +56,13 @@ namespace SterownikSP01 {
 	private: System::Windows::Forms::NumericUpDown^  numericUpDown1;
 	private: System::Windows::Forms::Label^  label6;
 	private: System::Windows::Forms::Label^  label7;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+
+
+
 	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -74,15 +77,12 @@ namespace SterownikSP01 {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm4::typeid));
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->numericUpDown4 = (gcnew System::Windows::Forms::NumericUpDown());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
@@ -94,6 +94,9 @@ namespace SterownikSP01 {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown4))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -103,7 +106,7 @@ namespace SterownikSP01 {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(7, 77);
+			this->label1->Location = System::Drawing::Point(7, 109);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(99, 13);
 			this->label1->TabIndex = 0;
@@ -117,7 +120,7 @@ namespace SterownikSP01 {
 			// 
 			this->numericUpDown4->DecimalPlaces = 1;
 			this->numericUpDown4->Increment = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 65536 });
-			this->numericUpDown4->Location = System::Drawing::Point(116, 75);
+			this->numericUpDown4->Location = System::Drawing::Point(116, 107);
 			this->numericUpDown4->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 300, 0, 0, 0 });
 			this->numericUpDown4->Name = L"numericUpDown4";
 			this->numericUpDown4->Size = System::Drawing::Size(65, 20);
@@ -140,18 +143,18 @@ namespace SterownikSP01 {
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
 				this->Column1,
-					this->Column2, this->Column3
+					this->Column3, this->Column2
 			});
-			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
-			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::ControlText;
-			dataGridViewCellStyle1->NullValue = nullptr;
-			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->dataGridView1->DefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle2->NullValue = nullptr;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->dataGridView1->DefaultCellStyle = dataGridViewCellStyle2;
 			this->dataGridView1->EnableHeadersVisualStyles = false;
 			this->dataGridView1->Location = System::Drawing::Point(298, 4);
 			this->dataGridView1->Name = L"dataGridView1";
@@ -159,35 +162,6 @@ namespace SterownikSP01 {
 			this->dataGridView1->Size = System::Drawing::Size(213, 354);
 			this->dataGridView1->TabIndex = 29;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm4::dataGridView1_CellContentClick);
-			// 
-			// Column1
-			// 
-			this->Column1->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::None;
-			this->Column1->Frozen = true;
-			this->Column1->HeaderText = L"ID";
-			this->Column1->MaxInputLength = 255;
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			this->Column1->Resizable = System::Windows::Forms::DataGridViewTriState::True;
-			this->Column1->Width = 30;
-			// 
-			// Column2
-			// 
-			this->Column2->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::None;
-			this->Column2->Frozen = true;
-			this->Column2->HeaderText = L"Axis Z [mm]";
-			this->Column2->MaxInputLength = 255;
-			this->Column2->Name = L"Column2";
-			this->Column2->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->Column2->Width = 90;
-			// 
-			// Column3
-			// 
-			this->Column3->Frozen = true;
-			this->Column3->HeaderText = L"Axis Y [mm]";
-			this->Column3->Name = L"Column3";
-			this->Column3->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->Column3->Width = 90;
 			// 
 			// button4
 			// 
@@ -202,7 +176,7 @@ namespace SterownikSP01 {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(187, 77);
+			this->label4->Location = System::Drawing::Point(187, 109);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(23, 13);
 			this->label4->TabIndex = 31;
@@ -260,7 +234,7 @@ namespace SterownikSP01 {
 			// 
 			this->numericUpDown1->DecimalPlaces = 1;
 			this->numericUpDown1->Increment = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 65536 });
-			this->numericUpDown1->Location = System::Drawing::Point(116, 102);
+			this->numericUpDown1->Location = System::Drawing::Point(116, 76);
 			this->numericUpDown1->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1000, 0, 0, 0 });
 			this->numericUpDown1->Name = L"numericUpDown1";
 			this->numericUpDown1->Size = System::Drawing::Size(65, 20);
@@ -270,7 +244,7 @@ namespace SterownikSP01 {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(187, 104);
+			this->label6->Location = System::Drawing::Point(187, 78);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(23, 13);
 			this->label6->TabIndex = 38;
@@ -279,7 +253,7 @@ namespace SterownikSP01 {
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(5, 104);
+			this->label7->Location = System::Drawing::Point(5, 78);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(99, 13);
 			this->label7->TabIndex = 39;
@@ -294,6 +268,35 @@ namespace SterownikSP01 {
 			this->button1->Text = L"Odczytaj";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm4::button1_Click_1);
+			// 
+			// Column1
+			// 
+			this->Column1->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::None;
+			this->Column1->Frozen = true;
+			this->Column1->HeaderText = L"ID";
+			this->Column1->MaxInputLength = 255;
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			this->Column1->Resizable = System::Windows::Forms::DataGridViewTriState::True;
+			this->Column1->Width = 30;
+			// 
+			// Column3
+			// 
+			this->Column3->Frozen = true;
+			this->Column3->HeaderText = L"Axis Y [mm]";
+			this->Column3->Name = L"Column3";
+			this->Column3->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->Column3->Width = 90;
+			// 
+			// Column2
+			// 
+			this->Column2->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::None;
+			this->Column2->Frozen = true;
+			this->Column2->HeaderText = L"Axis Z [mm]";
+			this->Column2->MaxInputLength = 255;
+			this->Column2->Name = L"Column2";
+			this->Column2->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->Column2->Width = 90;
 			// 
 			// MyForm4
 			// 
